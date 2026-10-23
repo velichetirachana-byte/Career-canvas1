@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Canvas — Draw Your Path, Build Your Future</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050611;--panel:#0d1020;--panel2:#12162b;--text:#f7f7ff;--muted:#a9aec8;
+  --purple:#8b5cf6;--blue:#5b8cff;--pink:#ec5aa8;--cyan:#43d9d1;--line:rgba(255,255,255,.1);
+}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 75% 20%,#17143b 0,#080916 38%,#04050d 100%);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+nav{height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;z-index:50;background:rgba(5,6,17,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.logo{font-size:25px;font-weight:800;letter-spacing:-1px}.logo span{color:#9d7aff}
+.logo small{display:block;color:#858ba8;font-size:9px;letter-spacing:2px;font-weight:600}
+.navlinks{display:flex;gap:28px;color:#cdd0e3;font-size:14px}.navlinks a:hover{color:white}
+.navbtn{border:1px solid rgba(255,255,255,.16);background:white;color:#090a13;border-radius:25px;padding:12px 20px;font-weight:700;cursor:pointer}
+.hero{min-height:720px;position:relative;padding:95px 6% 55px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px}
+.stars{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(#fff 1px,transparent 1px),radial-gradient(#8c75ff 1px,transparent 1px);background-size:120px 120px,190px 190px;background-position:20px 30px,80px 100px;opacity:.28}
+.heroCopy{position:relative;z-index:2;max-width:690px}.eyebrow{color:#a98cff;letter-spacing:4px;font-size:12px;font-weight:800;margin-bottom:20px}
+h1{font-size:clamp(48px,6vw,82px);line-height:.98;letter-spacing:-4px;margin-bottom:25px}
+.gradient{background:linear-gradient(90deg,#fff,#a48aff,#e879bd);-webkit-background-clip:text;color:transparent}
+.heroCopy p{font-size:18px;line-height:1.7;color:#aeb3cd;max-width:590px}
+.ctas{display:flex;gap:14px;margin:32px 0}.primary,.secondary{padding:15px 23px;border-radius:30px;cursor:pointer;font-weight:800}.primary{border:0;background:linear-gradient(90deg,#7655ff,#bd65dc);color:#fff;box-shadow:0 12px 35px rgba(126,81,255,.28)}.secondary{background:transparent;color:white;border:1px solid #343950}
+.heroScene{height:540px;position:relative}.planet{position:absolute;width:300px;height:300px;border-radius:50%;right:10%;top:10%;background:radial-gradient(circle at 32% 25%,#a9a1ff,#5550b8 38%,#1c2256 70%,#080b20);box-shadow:-20px 10px 90px #4b40d6}.planet:after{content:"";position:absolute;inset:35px -50px;border:15px solid rgba(164,144,255,.22);border-radius:50%;transform:rotate(-17deg)}
+.moon{position:absolute;width:90px;height:90px;border-radius:50%;left:8%;top:16%;background:#d5d7e6;box-shadow:0 0 40px rgba(255,255,255,.25)}
+.rocket{position:absolute;right:2%;bottom:16%;width:130px;height:250px;transform:rotate(12deg);filter:drop-shadow(0 20px 25px rgba(100,80,255,.25))}
+.rocket .body{width:72px;height:170px;border-radius:50% 50% 22px 22px;background:linear-gradient(90deg,#c9ccdf,#fff,#8e91ab);position:absolute;left:29px;top:25px}
+.rocket .window{width:38px;height:38px;border-radius:50%;background:#151b3e;border:7px solid #6e71a5;position:absolute;left:46px;top:58px}
+.rocket .fin{position:absolute;width:45px;height:75px;background:#8c56e8;bottom:30px}.rocket .f1{left:0;transform:skewY(25deg)}.rocket .f2{right:0;transform:skewY(-25deg)}
+.rocket .fire{position:absolute;left:45px;bottom:-42px;width:42px;height:75px;background:linear-gradient(#fff57b,#ff8b28,#ec315b);clip-path:polygon(50% 100%,0 0,50% 25%,100% 0);filter:blur(1px)}
+.astronaut{position:absolute;left:20%;bottom:8%;font-size:130px;filter:drop-shadow(0 15px 25px #000);animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-15px) rotate(-2deg)}}
+.fire{position:absolute;left:42%;bottom:7%;font-size:90px;filter:drop-shadow(0 0 25px #ff702d);animation:flicker .8s infinite alternate}
+@keyframes flicker{to{transform:scale(1.08) rotate(2deg)}}
+.section{padding:80px 6%;max-width:1450px;margin:auto}.sectionTitle{text-align:center;margin-bottom:42px}.sectionTitle h2{font-size:42px;letter-spacing:-2px}.sectionTitle p{color:var(--muted);margin-top:10px}
+.journey{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;align-items:stretch}.step{background:linear-gradient(180deg,#12162b,#090b18);border:1px solid var(--line);padding:24px 12px;text-align:center;border-radius:18px;cursor:pointer;transition:.25s}.step:hover{transform:translateY(-7px);border-color:#805fff}.step .icon{font-size:28px;margin-bottom:13px}.step h3{font-size:15px}.step p{font-size:11px;color:#8f95b0;margin-top:7px;line-height:1.4}
+.explore{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}.panel{background:linear-gradient(145deg,rgba(20,23,43,.96),rgba(8,10,20,.96));border:1px solid var(--line);border-radius:24px;padding:28px}.panel h3{font-size:23px;margin-bottom:8px}.panel>p{color:#8f95b0;font-size:14px;margin-bottom:22px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{border:1px solid var(--line);border-radius:17px;padding:18px;background:#0c0f1f;cursor:pointer;transition:.2s}.card:hover{background:#151932;transform:translateY(-3px)}.card .big{font-size:30px}.card h4{margin:10px 0 5px}.roadmap-card{position:relative}.roadmap-card strong{display:inline-block;margin-top:14px;color:#a98cff;font-size:12px}.roadmap-card:hover strong{text-decoration:underline}.card p{font-size:12px!important;color:#8f95b0!important;margin:0!important}
+.roadmapBox{display:flex;flex-direction:column;gap:11px}.resource-card strong{display:inline-block;margin-top:13px;color:#a98cff;font-size:12px}.resource-card:hover strong{text-decoration:underline}.resourceLink{display:block;padding:13px;border:1px solid var(--line);border-radius:14px;background:#11152a;color:#dfe2f0;margin-top:10px;transition:.2s}.resourceLink:hover{border-color:#8b5cf6;background:#171532;transform:translateX(2px)}.resourceType{color:#6ee7b7;font-size:10px;letter-spacing:1.5px;font-weight:800}.videoBadge{display:inline-block;margin-left:8px;padding:4px 7px;border-radius:99px;background:#25132a;color:#ff9cc7;font-size:9px}.route{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:15px;padding:13px}.route b{font-size:13px}.route span{margin-left:auto;color:#9d7aff}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.feature{padding:24px;border-radius:20px;background:#0c0f1d;border:1px solid var(--line)}.feature strong{display:block;margin:10px 0 7px}.feature p{font-size:13px;color:#8e94ad;line-height:1.5}.toolLink{display:inline-block;margin-top:13px;color:#a98cff;font-size:11px;font-weight:800}.feature:hover .toolLink{text-decoration:underline}.feature{cursor:pointer;transition:.2s}.feature:hover{transform:translateY(-4px);border-color:#805fff;background:#12162a}
+.stats{margin-top:20px;display:grid;grid-template-columns:repeat(5,1fr);background:linear-gradient(90deg,#17103a,#0c1938);border:1px solid var(--line);border-radius:22px;overflow:hidden}.stat{text-align:center;padding:26px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat b{font-size:28px}.stat span{display:block;color:#8f95b0;font-size:12px;margin-top:5px}
+footer{padding:55px 6%;border-top:1px solid var(--line);color:#8f95b0;text-align:center}.footerLogo{font-size:26px;color:white;font-weight:800;margin-bottom:8px}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.72);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modalBox{width:min(900px,100%);max-height:85vh;overflow:auto;background:#0d1020;border:1px solid #353957;border-radius:26px;padding:30px;box-shadow:0 30px 100px #000}.modalTop{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:22px}.close{border:0;background:#20243a;color:white;border-radius:50%;width:38px;height:38px;cursor:pointer}.optionGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.option{padding:18px;border:1px solid var(--line);border-radius:16px;background:#11152a;cursor:pointer}.option:hover{border-color:#9b76ff}.option b{display:block;margin-bottom:7px}.option small{color:#9197b0;line-height:1.5}
+.search{width:100%;padding:14px 16px;background:#080a15;border:1px solid var(--line);color:white;border-radius:13px;margin-bottom:15px}
+@media(max-width:950px){.navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:65px}.heroScene{height:390px}.journey{grid-template-columns:repeat(2,1fr)}.explore{grid-template-columns:1fr}.features{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.stat{border-bottom:1px solid var(--line)}}
+@media(max-width:600px){h1{font-size:48px;letter-spacing:-2px}.heroScene{height:310px}.planet{width:190px;height:190px}.astronaut{font-size:80px}.fire{font-size:55px}.rocket{transform:scale(.7) rotate(12deg);right:-8%}.cards,.optionGrid{grid-template-columns:1fr}.journey{grid-template-columns:1fr}.features{grid-template-columns:1fr}.ctas{flex-direction:column}.stats{grid-template-columns:1fr}}
+
+/* ===== Career Canvas enhancement layer ===== */
+:root{
+  --green:#6ee7b7;
+  --gold:#ffd166;
+  --danger:#ff7aa8;
+}
+body{
+  background:
+    radial-gradient(circle at 78% 12%,rgba(139,92,246,.24),transparent 28%),
+    radial-gradient(circle at 12% 72%,rgba(67,217,209,.10),transparent 25%),
+    #050611;
+}
+nav{transition:.25s}
+.navlinks a{position:relative}
+.navlinks a:after{
+  content:"";position:absolute;left:0;right:100%;bottom:-7px;height:2px;
+  background:linear-gradient(90deg,var(--purple),var(--pink));transition:.25s
+}
+.navlinks a:hover:after{right:0}
+.hero{min-height:690px}
+.heroCopy p{max-width:640px}
+.heroBadge{
+  display:inline-flex;align-items:center;gap:8px;margin:0 0 20px;
+  padding:8px 12px;border:1px solid rgba(110,231,183,.2);border-radius:999px;
+  background:rgba(110,231,183,.07);color:#b9f7de;font-size:12px;font-weight:800
+}
+.heroBadge i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green)}
+.trustRow{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;color:#8f95b0;font-size:12px}
+.trustRow span{display:flex;align-items:center;gap:6px}
+.miniDashboard{
+  position:absolute;right:0;bottom:2%;width:250px;padding:16px;border-radius:18px;
+  background:rgba(10,12,27,.86);border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 20px 60px rgba(0,0,0,.35);backdrop-filter:blur(16px);z-index:5
+}
+.miniDashboard .miniHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.miniDashboard small{color:#858ba8}
+.progressBar{height:7px;background:#1b2038;border-radius:99px;overflow:hidden;margin:8px 0 13px}
+.progressBar span{display:block;height:100%;width:42%;background:linear-gradient(90deg,var(--purple),var(--pink));border-radius:99px}
+.miniTask{display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line);font-size:11px;color:#b8bdd1}
+.miniTask b{color:#fff}
+.discovery{
+  display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:20px
+}
+.discoveryMain{
+  padding:28px;border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(34,27,70,.75),rgba(9,12,25,.95))
+}
+.discoveryMain h3{font-size:28px;letter-spacing:-1px}
+.discoveryMain p{color:#9da3bd;line-height:1.6;margin:8px 0 20px}
+.discoverySteps{display:flex;gap:8px;flex-wrap:wrap}
+.discoveryChip{
+  padding:9px 12px;border:1px solid var(--line);border-radius:12px;
+  background:#0c0f1f;color:#cbd0e2;font-size:12px
+}
+.discoverySide{
+  padding:24px;border-radius:24px;border:1px solid var(--line);background:#0c0f1d
+}
+.discoverySide strong{display:block;margin:8px 0}
+.discoverySide p{font-size:12px;color:#8f95b0;line-height:1.5}
+.goalPanel{margin-top:22px;display:none}
+.goalPanel.show{display:block}
+.goalInner{
+  display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:24px;border-radius:24px;
+  background:linear-gradient(135deg,#12172f,#0a0d1b);border:1px solid rgba(139,92,246,.28)
+}
+.goalKicker{color:#a98cff;font-size:11px;font-weight:800;letter-spacing:2px}
+.goalTitle{font-size:27px;margin:7px 0}
+.goalText{color:#9da3bd;font-size:13px;line-height:1.6}
+.nextActions{display:grid;gap:9px;margin-top:14px}
+.nextAction{display:flex;gap:10px;align-items:center;padding:11px;border-radius:12px;background:#0b0e1c;border:1px solid var(--line);font-size:12px}
+.nextAction b{color:#fff}
+.careerGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.careerTile{
+  padding:20px;border-radius:18px;background:#0c0f1d;border:1px solid var(--line);
+  cursor:pointer;transition:.2s
+}
+.careerTile:hover{transform:translateY(-4px);border-color:#805fff;background:#12162a}
+.careerTile .big{font-size:28px}.careerTile h4{margin:10px 0 5px}.careerTile p{font-size:11px;color:#8f95b0;line-height:1.5}
+.govBanner{
+  display:flex;justify-content:space-between;gap:20px;align-items:center;
+  padding:25px;border-radius:22px;background:linear-gradient(110deg,#11152d,#0d1320);
+  border:1px solid rgba(110,231,183,.18);margin-top:20px
+}
+.govBanner h3{font-size:24px}.govBanner p{color:#8f95b0;font-size:13px;line-height:1.5;margin-top:7px}
+.govPills{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.govPill{padding:8px 11px;border:1px solid var(--line);border-radius:999px;color:#cfd3e5;font-size:11px;background:#0b0e1b}
+.searchWrap{position:relative}
+.searchHint{font-size:11px;color:#777e9c;margin:-7px 0 13px}
+.emptyState{padding:25px;text-align:center;color:#8f95b0;border:1px dashed #30354d;border-radius:16px}
+.option.selected{border-color:#8b5cf6;background:#19153a;box-shadow:0 0 0 1px rgba(139,92,246,.18)}
+.resultScore{font-size:34px;font-weight:900;background:linear-gradient(90deg,#fff,#a98cff,#e879bd);-webkit-background-clip:text;color:transparent}
+.resultList{display:grid;gap:10px;margin-top:18px}
+.resultItem{padding:13px;border-radius:14px;background:#11152a;border:1px solid var(--line)}
+.resultItemTop{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+.resultItemTop b{color:#fff}.resultItemTop span{color:#a98cff;font-weight:800}
+.resultMeter{height:5px;background:#20253c;border-radius:99px;margin-top:8px;overflow:hidden}
+.resultMeter span{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--pink))}
+.roadmapMeta{
+  display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px
+}
+.roadmapMeta span{padding:7px 10px;border-radius:999px;background:#11152a;border:1px solid var(--line);font-size:11px;color:#aeb3cd}
+.route.done{border-color:rgba(110,231,183,.22);background:#0d1718}
+.route.done span{color:var(--green)}
+.modalBox{scrollbar-width:thin}
+.modalBox::-webkit-scrollbar{width:7px}.modalBox::-webkit-scrollbar-thumb{background:#30354d;border-radius:10px}
+.mobileMenu{display:none}
+@media(max-width:1100px){
+  .careerGrid{grid-template-columns:repeat(2,1fr)}
+  .discovery{grid-template-columns:1fr}
+  .miniDashboard{right:2%;bottom:-2%}
+}
+@media(max-width:950px){
+  .miniDashboard{position:relative;right:auto;bottom:auto;width:min(100%,430px);margin:0 auto}
+  .heroScene{height:470px}
+  .goalInner{grid-template-columns:1fr}
+  .govBanner{flex-direction:column;align-items:flex-start}
+  .govPills{justify-content:flex-start}
+}
+@media(max-width:600px){
+  .careerGrid{grid-template-columns:1fr}
+  .heroScene{height:350px}
+  .miniDashboard{display:none}
+  .trustRow{gap:10px}
+  .discoveryMain,.discoverySide{padding:20px}
+  .govBanner{padding:20px}
+}
+
+
+.skillsExplorerGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+.skillCategory{border:1px solid var(--line);background:#0b0e1b;border-radius:16px;padding:18px;cursor:pointer;transition:.2s}
+.skillCategory:hover{transform:translateY(-3px);border-color:#7664ff}
+.skillCategory b{display:block;font-size:16px;margin-bottom:6px}
+.skillCategory small{color:#aeb3cd;line-height:1.5}
+.skillResources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.skillResource{border:1px solid var(--line);background:#0b0e1b;border-radius:14px;padding:15px}
+.skillResource b{display:block;margin-bottom:6px}
+.skillResource p{color:#aeb3cd;font-size:12px;line-height:1.5;margin:0 0 10px}
+.skillResource a{display:inline-block;color:#a98cff;font-size:12px;font-weight:700;text-decoration:none}
+.skillResource a:hover{text-decoration:underline}
+@media(max-width:700px){.skillsExplorerGrid,.skillResources{grid-template-columns:1fr}}
+
+
+/* ===== Animated eagle flying across the homepage hero ===== */
+.hero{isolation:isolate}
+.eagle-flight{
+  position:absolute; z-index:3; top:clamp(115px,22%,220px); left:0;
+  width:clamp(100px,14vw,178px); aspect-ratio:180/100;
+  pointer-events:none; user-select:none; opacity:0;
+  filter:drop-shadow(0 5px 10px rgba(0,0,0,.35));
+  animation:eagle-cross 17s linear infinite;
+  will-change:transform,opacity;
+}
+.eagle-flight svg{display:block;width:100%;height:100%;overflow:visible}
+.eagle-body{fill:url(#eagleFeathers)}
+.eagle-wing{fill:#b7a9e9;stroke:#e1d8ff;stroke-width:1.2;stroke-linejoin:round;transform-box:fill-box}
+.eagle-wing.left{transform-origin:95% 90%;animation:eagle-flap-left .72s ease-in-out infinite alternate}
+.eagle-wing.right{transform-origin:5% 90%;animation:eagle-flap-right .72s ease-in-out infinite alternate}
+@keyframes eagle-cross{
+  0%{transform:translate3d(-22vw,18px,0) scale(.78) rotate(-4deg);opacity:0}
+  7%{opacity:.96}
+  28%{transform:translate3d(22vw,-8px,0) scale(.94) rotate(2deg);opacity:.96}
+  55%{transform:translate3d(55vw,12px,0) scale(1.05) rotate(-2deg);opacity:.96}
+  88%{opacity:.96}
+  100%{transform:translate3d(115vw,-15px,0) scale(.82) rotate(3deg);opacity:0}
+}
+@keyframes eagle-flap-left{from{transform:rotate(-24deg) scaleY(.88)}to{transform:rotate(24deg) scaleY(1.06)}}
+@keyframes eagle-flap-right{from{transform:rotate(24deg) scaleY(.88)}to{transform:rotate(-24deg) scaleY(1.06)}}
+@media(max-width:600px){.eagle-flight{top:115px;width:105px;animation-duration:14s}}
+@media(prefers-reduced-motion:reduce){.eagle-flight{animation:none;opacity:.85;left:auto;right:12px;top:105px;width:86px}.eagle-wing.left,.eagle-wing.right{animation:none}}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#home">Career <span>Canvas</span><small>DRAW YOUR PATH • BUILD YOUR FUTURE</small></a>
+  <div class="navlinks">
+    <a href="#journey">Journey</a><a href="#discover">Discover</a><a href="#roadmaps">Roadmaps</a><a href="#careers">Careers</a><a href="#resources">Resources</a>
+  </div>
+  <button class="navbtn" onclick="openAssessment()">Start Journey →</button>
+</nav>
+
+<section class="hero" id="home">
+  <div class="stars"></div>
+  <div class="eagle-flight" aria-hidden="true">
+    <svg viewBox="0 0 180 100" role="presentation" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="eagleFeathers" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1e7c9"/><stop offset=".48" stop-color="#c9b98e"/><stop offset="1" stop-color="#82749f"/></linearGradient></defs>
+      <path class="eagle-wing left" d="M91 48 C72 32 48 16 5 13 L23 27 9 25 30 39 17 37 42 50 31 51 57 61 74 64 89 58Z"/>
+      <path class="eagle-wing right" d="M91 48 C109 30 134 15 175 13 L158 27 172 25 151 39 164 37 139 50 150 51 124 61 107 64 93 58Z"/>
+      <path class="eagle-body" d="M76 51 C87 44 96 43 105 48 L125 42 119 51 107 56 97 69 91 58 82 63 76 59 61 62 71 54Z"/>
+      <path d="M122 43 L139 39 129 49 119 50Z" fill="#e9c77b"/>
+      <path d="M139 39 L145 42 136 45Z" fill="#302844"/>
+      <path d="M82 60 L77 73 88 65 93 73 97 60" fill="#9d8b6c"/>
+    </svg>
+  </div>
+  <div class="heroCopy">
+    <div class="heroBadge"><i></i> Built for students who are still figuring it out</div>
+    <div class="eyebrow">CAREER CANVAS</div>
+    <h1>Don't just choose a course.<br><span class="gradient">Design your career.</span></h1>
+    <p>From Class 10 to your first job, explore streams, degrees, skills, exams, internships and career paths in one simple journey.</p>
+    <div class="ctas">
+      <button class="primary" onclick="openAssessment()">Start Career Discovery →</button>
+      <button class="secondary" onclick="document.getElementById('journey').scrollIntoView()">Explore My Journey</button>
+    </div>
+    <div class="trustRow">
+      <span>🧭 Step-by-step guidance</span>
+      <span>🎯 Personalized direction</span>
+      <span>🇮🇳 India-focused paths</span>
+    </div>
+  </div>
+  <div class="heroScene" aria-label="3D inspired career space scene">
+    <div class="moon"></div><div class="planet"></div>
+    <div class="astronaut">🧑‍🚀</div><div class="fire">🔥</div>
+    <div class="rocket"><div class="body"></div><div class="window"></div><div class="fin f1"></div><div class="fin f2"></div><div class="fire"></div></div>
+    <div class="miniDashboard">
+      <div class="miniHead"><b>My Career Journey</b><small id="miniGoal">Not started</small></div>
+      <div class="progressBar"><span id="miniProgress"></span></div>
+      <div class="miniTask">🎯 <span><b>Discover</b><br>Find career areas that fit you</span></div>
+      <div class="miniTask">🧭 <span><b>Plan</b><br>See your step-by-step roadmap</span></div>
+      <div class="miniTask">🚀 <span><b>Build</b><br>Skills, projects & experience</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="journey">
+  <div class="sectionTitle"><h2>Your Journey, Step by Step</h2><p>Click any stage to explore what comes next.</p></div>
+  <div class="journey">
+    <div class="step" onclick="openModal('class10')"><div class="icon">🎒</div><h3>Class 10</h3><p>Discover interests & options</p></div>
+    <div class="step" onclick="openModal('intermediate')"><div class="icon">📚</div><h3>11th & 12th</h3><p>MPC • BiPC • CEC • MEC • HEC</p></div>
+    <div class="step" onclick="openModal('college')"><div class="icon">🎓</div><h3>College</h3><p>Degree, branch & entrance</p></div>
+    <div class="step" onclick="openModal('skills')"><div class="icon">💻</div><h3>Skills</h3><p>Build industry skills</p></div>
+    <div class="step" onclick="openModal('internship')"><div class="icon">💼</div><h3>Internship</h3><p>Get real experience</p></div>
+    <div class="step" onclick="openModal('placement')"><div class="icon">📈</div><h3>Placement</h3><p>Prepare for hiring</p></div>
+    <div class="step" onclick="openModal('job')"><div class="icon">🏆</div><h3>First Job</h3><p>Start your career</p></div>
+  </div>
+</section>
+
+<section class="section" id="discover">
+  <div class="sectionTitle">
+    <h2>Start With Yourself</h2>
+    <p>You don't need to know your career yet. Start with what you enjoy.</p>
+  </div>
+  <div class="discovery">
+    <div class="discoveryMain">
+      <div class="eyebrow">CAREER DISCOVERY</div>
+      <h3>Find directions that match your interests.</h3>
+      <p>A short prototype assessment asks about the kind of work, subjects and activities you enjoy. Your answers create a starting point—not a final decision.</p>
+      <div class="discoverySteps">
+        <span class="discoveryChip">1. Interests</span>
+        <span class="discoveryChip">2. Subjects</span>
+        <span class="discoveryChip">3. Work style</span>
+        <span class="discoveryChip">4. Career matches</span>
+      </div>
+      <button class="primary" style="margin-top:20px" onclick="openAssessment()">Take the 5-question test →</button>
+    </div>
+    <div class="discoverySide">
+      <div style="font-size:28px">💡</div>
+      <strong>No “wrong” answer.</strong>
+      <p>The goal is to help students discover possibilities, compare them and then research before making important education decisions.</p>
+      <div style="margin-top:18px;padding:13px;border-radius:14px;background:#080b16;border:1px solid var(--line);font-size:12px;color:#aeb3cd">
+        <b style="color:#fff">Tip:</b> A career test should open doors—not put you inside one box.
+      </div>
+    </div>
+  </div>
+  <div class="goalPanel" id="goalPanel">
+    <div class="goalInner">
+      <div>
+        <div class="goalKicker">YOUR STARTING DIRECTION</div>
+        <div class="goalTitle" id="goalTitle">Explore your matches</div>
+        <div class="resultScore" id="goalScore">0%</div>
+        <div class="goalText" id="goalText">Take the assessment to see your strongest career areas.</div>
+      </div>
+      <div>
+        <div class="goalKicker">YOUR NEXT 3 ACTIONS</div>
+        <div class="nextActions" id="goalActions">
+          <div class="nextAction">🧭 <span>Complete Career Discovery</span></div>
+          <div class="nextAction">📚 <span>Explore matching career roadmaps</span></div>
+          <div class="nextAction">🧪 <span>Try a small project or activity</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="roadmaps">
+  <div class="sectionTitle">
+    <h2>Popular Roadmaps</h2>
+    <p>Explore complete journeys from your current stage to a career.</p>
+  </div>
+
+  <div class="cards roadmapCards">
+    <div class="card roadmap-card" onclick="openRoadmap('MPC → CSE → Software Engineer')">
+      <span class="big">💻</span>
+      <h4>MPC → CSE → Software Engineer</h4>
+      <p>Class 10 → MPC → B.Tech CSE → Programming → Projects → Internship → Placement → Job</p>
+      <strong>Explore roadmap →</strong>
+    </div>
+
+    <div class="card roadmap-card" onclick="openRoadmap('MPC → ECE → Embedded Engineer')">
+      <span class="big">🔌</span>
+      <h4>MPC → ECE → Embedded Engineer</h4>
+      <p>Class 10 → MPC → ECE → C / Embedded C → Microcontrollers → Projects → Internship → Job</p>
+      <strong>Explore roadmap →</strong>
+    </div>
+
+    <div class="card roadmap-card" onclick="openRoadmap('MPC → AI & Data Science')">
+      <span class="big">🤖</span>
+      <h4>MPC → AI & Data Science</h4>
+      <p>MPC → AI/DS degree → Python → Statistics → Machine Learning → Projects → Internship → Job</p>
+      <strong>Explore roadmap →</strong>
+    </div>
+
+    <div class="card roadmap-card" onclick="openRoadmap('BiPC → Medicine → Doctor')">
+      <span class="big">🩺</span>
+      <h4>BiPC → Medicine → Doctor</h4>
+      <p>Class 10 → BiPC → Entrance preparation → Medical college → Clinical training → Doctor</p>
+      <strong>Explore roadmap →</strong>
+    </div>
+
+    <div class="card roadmap-card" onclick="openRoadmap('BiPC → Pharmacy / Life Sciences')">
+      <span class="big">🧬</span>
+      <h4>BiPC → Pharmacy / Life Sciences</h4>
+      <p>BiPC → Degree → Laboratory / practical skills → Internship → Industry or higher studies</p>
+      <strong>Explore roadmap →</strong>
+    </div>
+
+    <div class="card roadmap-card" onclick="openRoadmap('CEC → Commerce → Finance')">
+      <span class="big">💰</span>
+      <h4>CEC → Commerce → Finance</h4>
+      <p>Class 10 → CEC → Commerce / Finance → Accounting → Internship → Placement → Career</p>
+      <strong>Explore roadmap →</strong>
+    </div>
+
+    <div class="card roadmap-card" onclick="openRoadmap('MEC → Economics → Data Analyst')">
+      <span class="big">📊</span>
+      <h4>MEC → Economics → Data Analyst</h4>
+      <p>MEC → Degree → Excel → Statistics → SQL → Python → Dashboard → Portfolio → Job</p>
+      <strong>Explore roadmap →</strong>
+    </div>
+
+    <div class="card roadmap-card" onclick="openRoadmap('Any Degree → IT Career')">
+      <span class="big">🚀</span>
+      <h4>Any Degree → IT Career</h4>
+      <p>Degree → Programming → Projects → GitHub → Internship → Resume → Interviews → Job</p>
+      <strong>Explore roadmap →</strong>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="careers">
+  <div class="sectionTitle">
+    <h2>Explore Career Worlds</h2>
+    <p>Start with an area that interests you. You can always explore more than one.</p>
+  </div>
+  <div class="careerGrid">
+    <div class="careerTile" onclick="showCareer('Engineering & Technology')"><div class="big">⚡</div><h4>Engineering & Technology</h4><p>CSE, ECE, VLSI, embedded, AI, mechanical, civil and more.</p></div>
+    <div class="careerTile" onclick="showCareer('Medicine & Life Sciences')"><div class="big">🧬</div><h4>Medicine & Life Sciences</h4><p>Medicine, pharmacy, nursing, biotechnology, agriculture and research.</p></div>
+    <div class="careerTile" onclick="showCareer('Business & Finance')"><div class="big">💼</div><h4>Business & Finance</h4><p>Commerce, accounting, finance, management, entrepreneurship and banking.</p></div>
+    <div class="careerTile" onclick="showCareer('Creative & Design')"><div class="big">🎨</div><h4>Creative & Design</h4><p>UI/UX, product design, media, writing, animation and visual communication.</p></div>
+    <div class="careerTile" onclick="showCareer('Law & Public Service')"><div class="big">⚖️</div><h4>Law & Public Service</h4><p>Law, civil services, policy, administration and social-sector careers.</p></div>
+    <div class="careerTile" onclick="showCareer('Defence & Uniformed Services')"><div class="big">🛡️</div><h4>Defence & Uniformed Services</h4><p>Explore defence, technical and other uniformed-service career pathways.</p></div>
+    <div class="careerTile" onclick="showCareer('Research & Academia')"><div class="big">🔬</div><h4>Research & Academia</h4><p>Higher studies, laboratories, teaching, scientific and technical research.</p></div>
+    <div class="careerTile" onclick="showCareer('Skilled & Vocational Careers')"><div class="big">🛠️</div><h4>Skilled & Vocational</h4><p>ITI, diploma, practical skills, trades and industry-focused careers.</p></div>
+  </div>
+  <div class="govBanner">
+    <div>
+      <div class="eyebrow" style="margin-bottom:8px">GOVERNMENT & PUBLIC SECTOR</div>
+      <h3>A career path beyond campus placements.</h3>
+      <p>Explore exam-based and public-sector directions alongside private careers. The prototype keeps these as a dedicated discovery route.</p>
+    </div>
+    <div class="govPills">
+      <span class="govPill">🏛️ Civil Services</span>
+      <span class="govPill">🛰️ Space & Research</span>
+      <span class="govPill">🛡️ Defence</span>
+      <span class="govPill">🚆 Railways</span>
+      <span class="govPill">📋 SSC</span>
+      <span class="govPill">🏦 Banking</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tools">
+  <div class="sectionTitle"><h2>Explore More Options</h2><p>Discover more ways to plan, prepare and build your career.</p></div>
+  <div class="features">
+    <div class="feature" onclick="openTool('interest')"><div>🧠</div><strong>Career Interest Test</strong><p>Explore interests, subjects, work style and personality before choosing a direction.</p><span class="toolLink">Explore options →</span></div>
+    <div class="feature" onclick="openTool('roadmap')"><div>🧭</div><strong>Career Roadmap</strong><p>Build a journey from your current stage to your target career.</p><span class="toolLink">Explore options →</span></div>
+    <div class="feature" onclick="openTool('skills')"><div>📋</div><strong>Skill Checker</strong><p>See which skills you need and where to start learning them.</p><span class="toolLink">Explore options →</span></div>
+    <div class="feature" onclick="openTool('college')"><div>🏫</div><strong>College Explorer</strong><p>Explore colleges by stream, degree, branch, entrance route and location.</p><span class="toolLink">Explore options →</span></div>
+    <div class="feature" onclick="openTool('internship')"><div>💼</div><strong>Internship Finder</strong><p>Explore internship types and the experience you can build.</p><span class="toolLink">Explore options →</span></div>
+    <div class="feature" onclick="openTool('resume')"><div>📄</div><strong>Resume Builder</strong><p>Choose the resume type that matches your current education stage.</p><span class="toolLink">Explore options →</span></div>
+    <div class="feature" onclick="openTool('interview')"><div>🎤</div><strong>Interview Practice</strong><p>Practice aptitude, technical, HR and communication rounds.</p><span class="toolLink">Explore options →</span></div>
+    <div class="feature" onclick="openTool('goals')"><div>🎯</div><strong>Goal Tracker</strong><p>Track learning, projects, certificates, applications and placement tasks.</p><span class="toolLink">Explore options →</span></div>
+  </div>
+</section>
+
+<section class="section" id="resources">
+  <div class="sectionTitle"><h2>Learn Without Getting Lost</h2><p>Explore courses, useful links and videos organized around your goal.</p></div>
+  <div class="panel">
+    <div class="searchWrap"><input class="search" placeholder="Search careers, courses, skills, exams..." oninput="searchResources(this.value)" aria-label="Search resources"></div>
+    <div class="searchHint">Try: Python, web development, JEE, internships, communication, projects...</div>
+    <div class="cards resourceCards" id="resourceCards">
+      <div class="card resource-card" onclick="openResource('courses')"><span class="big">📘</span><h4>Free Courses</h4><p>Structured learning for programming, web, Python and engineering topics.</p><strong>Explore courses →</strong></div>
+      <div class="card resource-card" onclick="openResource('links')"><span class="big">🔗</span><h4>Useful Links</h4><p>Official education, entrance-exam, college and learning websites.</p><strong>Open useful links →</strong></div>
+      <div class="card resource-card" onclick="openResource('videos')"><span class="big">▶️</span><h4>Learning Videos</h4><p>Video lessons and topic-based YouTube resources for students.</p><strong>Watch videos →</strong></div>
+      <div class="card resource-card" onclick="openResource('exams')"><span class="big">📝</span><h4>Entrance Exams</h4><p>Explore official exam and admission resources.</p><strong>Explore exams →</strong></div>
+      <div class="card resource-card" onclick="openResource('projects')"><span class="big">🧪</span><h4>Projects</h4><p>Project ideas to build practical experience and a portfolio.</p><strong>Find project ideas →</strong></div>
+      <div class="card resource-card" onclick="openResource('certifications')"><span class="big">🏅</span><h4>Certifications</h4><p>Explore certificates and structured learning opportunities.</p><strong>Explore certifications →</strong></div>
+      <div class="card resource-card" onclick="openResource('communication')"><span class="big">🗣️</span><h4>Communication</h4><p>English, presentations, teamwork and professional communication.</p><strong>Learn communication →</strong></div>
+      <div class="card resource-card" onclick="openResource('aptitude')"><span class="big">🧮</span><h4>Aptitude</h4><p>Practice quantitative, reasoning and verbal ability.</p><strong>Practice aptitude →</strong></div>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>10 → 1</b><span>Class 10 to First Job</span></div>
+    <div class="stat"><b>50+</b><span>Career categories</span></div>
+    <div class="stat"><b>100+</b><span>Learning directions</span></div>
+    <div class="stat"><b>∞</b><span>Possible journeys</span></div>
+    <div class="stat"><b>1</b><span>Place to explore</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footerLogo">Career Canvas</div>
+  <p>Where confusion becomes clarity — from Class 10 to your first job.</p>
+</footer>
+
+<div class="modal" id="modal" onclick="closeIfOutside(event)">
+  <div class="modalBox">
+    <div class="modalTop"><div><div class="eyebrow" id="modalEyebrow">EXPLORE</div><h2 id="modalTitle">Choose your direction</h2></div><button class="close" onclick="closeModal()">✕</button></div>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+const data = {
+  class10:{
+    eyebrow:"CLASS 10", title:"Choose your next path",
+    content:`<div class="optionGrid">
+      <div class="option" onclick="openModal('intermediate')"><b>📚 Intermediate / 11th–12th</b><small>MPC, BiPC, CEC, MEC, HEC and vocational streams.</small></div>
+      <div class="option" onclick="openBranchExplorer('Diploma')"><b>🛠️ Diploma</b><small>Choose a technical branch, see subjects, skills and learning resources.</small></div>
+      <div class="option" onclick="openBranchExplorer('ITI')"><b>⚙️ ITI</b><small>Explore technical trades, trade theory, practical skills and careers.</small></div>
+      <div class="option" onclick="openBranchExplorer('Vocational')"><b>🔧 Vocational</b><small>Explore job-oriented subjects and practical learning routes.</small></div>
+      <div class="option" onclick="openBranchExplorer('Arts & Humanities')"><b>🎨 Arts & Humanities</b><small>Explore humanities, languages, social sciences and creative directions.</small></div>
+      <div class="option" onclick="openAssessment()"><b>🧠 Not sure?</b><small>Take a short career discovery assessment.</small></div>
+    </div>`
+  },
+  intermediate:{
+    eyebrow:"11TH & 12TH", title:"Choose your Intermediate stream",
+    content:`<div class="optionGrid">
+      <div class="option" onclick="openStudyDetail('MPC')"><b>⚙️ MPC</b><small>Mathematics • Physics • Chemistry<br>Engineering, CS, Architecture, Defence & more.</small></div>
+      <div class="option" onclick="openStudyDetail('BiPC')"><b>🧬 BiPC</b><small>Biology • Physics • Chemistry<br>Medicine, Pharmacy, Nursing, Life Sciences & more.</small></div>
+      <div class="option" onclick="openStudyDetail('CEC')"><b>💼 CEC</b><small>Civics • Economics • Commerce<br>Law, Business, Management, CA pathways & more.</small></div>
+      <div class="option" onclick="openStudyDetail('MEC')"><b>📊 MEC</b><small>Mathematics • Economics • Commerce<br>Finance, Economics, Business & Analytics.</small></div>
+      <div class="option" onclick="openStudyDetail('HEC')"><b>🌍 HEC</b><small>History • Economics • Civics<br>Law, Civil Services, Humanities & Social Sciences.</small></div>
+      <div class="option" onclick="openBranchExplorer('Vocational')"><b>🛠️ Vocational</b><small>Practical, career-focused learning options.</small></div>
+    </div>`
+  },
+  college:{
+    eyebrow:"COLLEGE", title:"Explore Degrees, Colleges & Branches",
+    content:`<div class="optionGrid">
+      <div class="option" onclick="openCollegeExplorer('engineering')"><b>⚙️ B.Tech / Engineering</b><small>Explore colleges from top-ranked institutes to wider options, then choose a branch.</small></div>
+      <div class="option" onclick="openCategoryColleges('medical')"><b>🩺 Medicine & Health</b><small>Explore medical, dental, nursing, pharmacy and allied-health colleges.</small></div>
+      <div class="option" onclick="openCategoryColleges('commerce')"><b>💰 Commerce & Finance</b><small>Explore B.Com, Economics, Finance, Accounting and related colleges.</small></div>
+      <div class="option" onclick="openCategoryColleges('management')"><b>📈 Management</b><small>Explore management colleges, BBA and business-focused programs.</small></div>
+      <div class="option" onclick="openCategoryColleges('law')"><b>⚖️ Law</b><small>Explore law colleges and integrated legal programs.</small></div>
+      <div class="option" onclick="openCategoryColleges('arts')"><b>🔬 Arts & Sciences</b><small>Explore science, mathematics, psychology, economics and humanities colleges.</small></div>
+    </div>`
+  },
+  skills:{
+    eyebrow:"SKILLS", title:"Build skills employers value",
+    content:`<div class="optionGrid">
+      <div class="option" onclick="showDetail('Programming')"><b>💻 Programming</b><small>C, C++, Java, Python, JavaScript and problem solving.</small></div>
+      <div class="option" onclick="showDetail('Technical Skills')"><b>⚡ Technical Skills</b><small>Electronics, embedded, cloud, data, design and tools.</small></div>
+      <div class="option" onclick="showDetail('Communication')"><b>🗣️ Communication</b><small>English, presentation, teamwork and professional writing.</small></div>
+      <div class="option" onclick="showDetail('Aptitude')"><b>🧮 Aptitude</b><small>Quantitative ability, reasoning and verbal ability.</small></div>
+      <div class="option" onclick="showDetail('Projects')"><b>🧪 Projects</b><small>Build real projects and create a portfolio.</small></div>
+      <div class="option" onclick="showDetail('Certifications')"><b>🏅 Certifications</b><small>Structured learning and proof of skills.</small></div>
+    </div>`
+  },
+  internship:{
+    eyebrow:"INTERNSHIPS", title:"Turn learning into experience",
+    content:`<div class="optionGrid">
+      <div class="option" onclick="showDetail('Technical Internships')"><b>💻 Technical</b><small>Software, electronics, embedded, data and engineering.</small></div>
+      <div class="option" onclick="showDetail('Research Internships')"><b>🔬 Research</b><small>Labs, universities and research-oriented experience.</small></div>
+      <div class="option" onclick="showDetail('Business Internships')"><b>📊 Business</b><small>Marketing, finance, HR, operations and sales.</small></div>
+      <div class="option" onclick="showDetail('Portfolio')"><b>📁 Build Portfolio</b><small>Projects, GitHub, certificates and achievements.</small></div>
+    </div>`
+  },
+  placement:{
+    eyebrow:"PLACEMENT", title:"Prepare for your first job",
+    content:`<div class="optionGrid">
+      <div class="option" onclick="showDetail('Resume')"><b>📄 Resume</b><small>Create a clear fresher resume.</small></div>
+      <div class="option" onclick="showDetail('Aptitude Preparation')"><b>🧮 Aptitude</b><small>Practice quantitative, reasoning and verbal questions.</small></div>
+      <div class="option" onclick="showDetail('Technical Interview')"><b>💻 Technical Interview</b><small>Prepare core subjects and technical questions.</small></div>
+      <div class="option" onclick="showDetail('HR Interview')"><b>🎤 HR Interview</b><small>Practice common questions and communication.</small></div>
+      <div class="option" onclick="showDetail('Group Discussion')"><b>👥 Group Discussion</b><small>Build confidence and structured speaking.</small></div>
+      <div class="option" onclick="showDetail('Job Applications')"><b>🚀 Job Applications</b><small>Organize applications and track opportunities.</small></div>
+    </div>`
+  },
+  job:{
+    eyebrow:"FIRST JOB", title:"You're ready to launch 🚀",
+    content:`<div class="optionGrid">
+      <div class="option" onclick="showDetail('Software Engineer')"><b>💻 Software Engineer</b><small>Build software and solve technical problems.</small></div>
+      <div class="option" onclick="showDetail('Embedded Engineer')"><b>🔌 Embedded Engineer</b><small>Work with microcontrollers, firmware and electronics.</small></div>
+      <div class="option" onclick="showDetail('VLSI / Electronics')"><b>📡 VLSI / Electronics</b><small>Digital design, Verilog, VLSI tools and electronics fundamentals.</small></div>
+      <div class="option" onclick="showDetail('Data Analyst')"><b>📊 Data Analyst</b><small>Turn data into useful business insights.</small></div>
+      <div class="option" onclick="showDetail('Designer')"><b>🎨 Designer</b><small>UI/UX, visual and product design.</small></div>
+      <div class="option" onclick="showDetail('Explore More Jobs')"><b>🌟 Explore More</b><small>Discover more job roles.</small></div>
+    </div>`
+  }
+};
+
+const assessment = [
+  {q:"Which activity sounds most enjoyable?", opts:[
+    ["💻","Building with technology","tech"],["🧬","Discovering science","science"],["💼","Business & money","business"],
+    ["🎨","Creating & designing","creative"],["🗣️","Helping & working with people","people"],["🛠️","Making or repairing things","hands"]
+  ]},
+  {q:"Which subjects do you naturally enjoy more?", opts:[
+    ["📐","Maths & problem solving","tech"],["🔬","Biology & science","science"],["📊","Commerce & economics","business"],
+    ["📝","Languages & social studies","people"],["🎨","Art, media & design","creative"],["⚙️","Practical/technical work","hands"]
+  ]},
+  {q:"How would you rather spend a project day?", opts:[
+    ["💻","Coding or using a computer","tech"],["🔬","Experimenting or researching","science"],["📈","Planning a business idea","business"],
+    ["🎨","Designing something new","creative"],["🤝","Discussing ideas with a team","people"],["🔧","Building a working prototype","hands"]
+  ]},
+  {q:"What kind of result feels most satisfying?", opts:[
+    ["🧩","Solving a difficult problem","tech"],["💡","Understanding how something works","science"],["💰","Making a plan successful","business"],
+    ["✨","Creating something original","creative"],["❤️","Making a difference for people","people"],["⚙️","Seeing something physically work","hands"]
+  ]},
+  {q:"Which work style sounds most like you?", opts:[
+    ["🧠","Logical and analytical","tech"],["🔎","Curious and research-focused","science"],["🎯","Goal and results-focused","business"],
+    ["🌈","Imaginative and flexible","creative"],["👥","Collaborative and people-focused","people"],["🛠️","Hands-on and practical","hands"]
+  ]}
+];
+
+const assessmentLabels = {
+  tech:{name:"Engineering & Technology",icon:"⚡",careers:"CSE, ECE, VLSI, Embedded, AI & Software"},
+  science:{name:"Science & Life Sciences",icon:"🧬",careers:"Medicine, Pharmacy, Biotechnology, Research"},
+  business:{name:"Business & Finance",icon:"💼",careers:"Commerce, Finance, Management, Banking"},
+  creative:{name:"Creative & Design",icon:"🎨",careers:"UI/UX, Product Design, Media, Writing"},
+  people:{name:"People, Law & Public Service",icon:"🗣️",careers:"Law, Civil Services, Teaching, Psychology"},
+  hands:{name:"Practical & Skilled Careers",icon:"🛠️",careers:"Diploma, ITI, Manufacturing, Technical Trades"}
+};
+
+let assessmentState = {step:0, scores:{tech:0,science:0,business:0,creative:0,people:0,hands:0}};
+let lastRoadmap = "";
+
+function openModal(key){
+  const d=data[key]; if(!d) return;
+  setModal(d.eyebrow,d.title,d.content);
+}
+function setModal(eyebrow,title,content){
+  document.getElementById('modalEyebrow').textContent=eyebrow;
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modalContent').innerHTML=content;
+  document.getElementById('modal').classList.add('show');
+}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+function closeIfOutside(e){if(e.target.id==="modal")closeModal()}
+document.addEventListener('keydown',e=>{if(e.key==="Escape")closeModal()});
+
+function openAssessment(){
+  assessmentState={step:0,scores:{tech:0,science:0,business:0,creative:0,people:0,hands:0}};
+  renderAssessment();
+}
+function renderAssessment(){
+  const q=assessment[assessmentState.step];
+  const pct=Math.round((assessmentState.step/assessment.length)*100);
+  setModal("CAREER DISCOVERY",`Question ${assessmentState.step+1} of ${assessment.length}`,
+    `<div style="margin-bottom:18px">
+      <div class="progressBar"><span style="width:${Math.max(8,pct)}%"></span></div>
+      <p style="color:#8f95b0;font-size:12px">Pick the option that feels closest to you. There is no right or wrong answer.</p>
+    </div>
+    <h3 style="font-size:22px;margin-bottom:15px">${q.q}</h3>
+    <div class="optionGrid">${q.opts.map((o,i)=>`
+      <div class="option" onclick="answerAssessment('${o[2]}')">
+        <b>${o[0]} ${o[1]}</b><small>Choose this if it sounds like you.</small>
+      </div>`).join("")}</div>`
+  );
+}
+function answerAssessment(type){
+  assessmentState.scores[type]++;
+  assessmentState.step++;
+  if(assessmentState.step<assessment.length){renderAssessment();return;}
+  showAssessmentResult();
+}
+function showAssessmentResult(){
+  const sorted=Object.entries(assessmentState.scores).sort((a,b)=>b[1]-a[1]);
+  const top=sorted[0], total=assessment.length;
+  const confidence=Math.round((top[1]/total)*100);
+  const secondary=sorted[1];
+  const results=sorted.map(([key,score])=>{
+    const pct=Math.round((score/total)*100);
+    return `<div class="resultItem">
+      <div class="resultItemTop"><b>${assessmentLabels[key].icon} ${assessmentLabels[key].name}</b><span>${pct}%</span></div>
+      <div class="resultMeter"><span style="width:${pct}%"></span></div>
+      <small style="display:block;color:#7f86a3;margin-top:7px">${assessmentLabels[key].careers}</small>
+    </div>`;
+  }).join("");
+  setModal("YOUR DISCOVERY RESULT","Your career canvas is taking shape ✨",
+    `<div style="display:grid;grid-template-columns:1fr;gap:10px">
+      <div class="panel" style="padding:22px">
+        <div style="font-size:12px;color:#8f95b0">STRONGEST MATCH</div>
+        <h3 style="font-size:26px;margin:7px 0">${assessmentLabels[top[0]].icon} ${assessmentLabels[top[0]].name}</h3>
+        <div class="resultScore">${confidence}%</div>
+        <p style="color:#aeb3cd;line-height:1.6;margin-top:5px">This is a starting direction based on your answers. Your second strongest area is <b>${assessmentLabels[secondary[0]].name}</b>.</p>
+      </div>
+      <h3 style="margin-top:8px">Your match map</h3>
+      <div class="resultList">${results}</div>
+      <div class="panel" style="padding:18px;margin-top:8px">
+        <b>What next?</b>
+        <p style="color:#8f95b0;font-size:12px;line-height:1.5;margin-top:7px">Explore a roadmap, compare education routes, and try a small project before making a big decision.</p>
+        <button class="primary" style="margin-top:12px" onclick="applyResult('${top[0]}')">Build My Starter Plan →</button>
+      </div>
+    </div>`
+  );
+}
+function applyResult(type){
+  const label=assessmentLabels[type];
+  const goalPanel=document.getElementById('goalPanel');
+  goalPanel.classList.add('show');
+  document.getElementById('goalTitle').textContent=`${label.icon} ${label.name}`;
+  document.getElementById('goalScore').textContent=`${Math.round((assessmentState.scores[type]/assessment.length)*100)}% match`;
+  document.getElementById('goalText').textContent=`Good starting areas: ${label.careers}. Explore them, compare the required education and test your interest through projects or activities.`;
+  document.getElementById('goalActions').innerHTML=`
+    <div class="nextAction">🧭 <span><b>Explore</b><br>Open matching career paths</span></div>
+    <div class="nextAction">📚 <span><b>Learn</b><br>Find the subjects and skills you need</span></div>
+    <div class="nextAction">🧪 <span><b>Try</b><br>Build one small project or experience</span></div>`;
+  document.getElementById('miniGoal').textContent=label.name;
+  document.getElementById('miniProgress').style.width="42%";
+  closeModal();
+  document.getElementById('goalPanel').scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+const studyDetails={
+  MPC:{icon:'⚙️',title:'MPC — Mathematics, Physics & Chemistry',info:'A strong foundation for engineering, computer science, architecture, physical sciences and several technical careers.',subjects:['Mathematics','Physics','Chemistry'],learn:['Algebra & Calculus foundations','Mechanics, electricity & waves','Physical, organic & inorganic chemistry'],links:[['📘 NCERT / ePathshala','https://www.epathshala.nic.in/'],['📝 JEE Main — NTA','https://jeemain.nta.nic.in/'],['🎓 NPTEL Courses','https://www.nptel.ac.in/courses'],['▶️ NPTEL Videos','https://www.youtube.com/@nptelhrd']]},
+  BiPC:{icon:'🧬',title:'BiPC — Biology, Physics & Chemistry',info:'A foundation for medicine, pharmacy, nursing, biotechnology, agriculture, life sciences and research.',subjects:['Biology','Physics','Chemistry'],learn:['Cell biology, genetics & human biology','Mechanics, electricity & basic physics','Organic, inorganic & biological chemistry'],links:[['📘 NCERT / ePathshala','https://www.epathshala.nic.in/'],['🩺 NEET — NTA','https://neet.nta.nic.in/'],['🎓 SWAYAM','https://swayam.gov.in/'],['▶️ NPTEL Videos','https://www.youtube.com/@nptelhrd']]},
+  CEC:{icon:'💼',title:'CEC — Civics, Economics & Commerce',info:'Useful for commerce, accounting, business, management, law, banking and public-service directions.',subjects:['Civics / Political Science','Economics','Commerce / Accountancy'],learn:['Indian government & constitution basics','Demand, supply, markets & economics','Accounting, business studies & finance basics'],links:[['📘 ePathshala','https://www.epathshala.nic.in/'],['🎓 SWAYAM','https://swayam.gov.in/'],['📚 NIOS','https://www.nios.ac.in/']]},
+  MEC:{icon:'📊',title:'MEC — Mathematics, Economics & Commerce',info:'Combines quantitative thinking with business and economics, useful for analytics, finance, economics and management.',subjects:['Mathematics','Economics','Commerce / Accountancy'],learn:['Algebra, statistics & quantitative reasoning','Microeconomics & macroeconomics basics','Accounting, business & financial concepts'],links:[['📘 ePathshala','https://www.epathshala.nic.in/'],['🎓 SWAYAM','https://swayam.gov.in/'],['🎓 NPTEL Courses','https://www.nptel.ac.in/courses']]},
+  HEC:{icon:'🌍',title:'HEC — History, Economics & Civics',info:'Useful for humanities, law, public administration, civil services, journalism, teaching and social sciences.',subjects:['History','Economics','Civics / Political Science'],learn:['Indian & world history','Economics and society','Government, constitution & public administration basics'],links:[['📘 ePathshala','https://www.epathshala.nic.in/'],['🎓 SWAYAM','https://swayam.gov.in/'],['🏛️ NTA Exams','https://www.nta.ac.in/']]}
+};
+
+const branchData={
+ Diploma:[
+  ['💻','Computer Engineering',['Programming Fundamentals','Computer Networks','Database Management','Web Technology','Operating Systems Basics'],'https://www.nptel.ac.in/courses'],
+  ['📡','Electronics & Communication',['Electronic Devices','Digital Electronics','Analog Circuits','Communication Systems','Microcontrollers','PCB & Measurements'],'https://www.nptel.ac.in/courses'],
+  ['⚡','Electrical Engineering',['Electrical Circuits','Electrical Machines','Power Systems','Measurements','Control Systems','Basic Electronics'],'https://www.nptel.ac.in/courses'],
+  ['⚙️','Mechanical Engineering',['Engineering Drawing','Engineering Mechanics','Thermodynamics','Manufacturing Processes','Machine Design','CAD Basics'],'https://www.nptel.ac.in/courses'],
+  ['🏗️','Civil Engineering',['Engineering Drawing','Surveying','Building Materials','Strength of Materials','Concrete Technology','Construction Practice'],'https://www.nptel.ac.in/courses'],
+  ['🚗','Automobile Engineering',['Automotive Engines','Vehicle Systems','Automobile Electrical','Chassis & Transmission','Vehicle Maintenance'],'https://www.nptel.ac.in/courses'],
+  ['🧪','Chemical Engineering',['Chemical Process Principles','Fluid Mechanics','Heat Transfer','Mass Transfer','Process Equipment'],'https://www.nptel.ac.in/courses'],
+  ['🤖','AI & Data / Computer Applications',['Python Basics','Statistics','Data Handling','Database Basics','Machine Learning Foundations'],'https://www.nptel.ac.in/courses']
+ ],
+ ITI:[
+  ['⚡','Electrician',['Electrical Fundamentals','Wiring','Electrical Machines','Measurements','Safety & Maintenance'],'https://www.ncvtmis.gov.in/'],
+  ['🔧','Fitter',['Workshop Practice','Fitting Operations','Engineering Drawing','Measurement & Inspection','Machine Tools'],'https://www.ncvtmis.gov.in/'],
+  ['📡','Electronics Mechanic',['Electronic Components','Digital Electronics','Communication Basics','PCB & Soldering','Testing & Troubleshooting'],'https://www.ncvtmis.gov.in/'],
+  ['💻','COPA / Computer Operator',['Computer Fundamentals','Operating Systems','Office Tools','Internet & Networking Basics','Programming Basics'],'https://www.ncvtmis.gov.in/'],
+  ['🔥','Welder',['Welding Processes','Workshop Safety','Materials','Joint Preparation','Welding Practice'],'https://www.ncvtmis.gov.in/'],
+  ['📐','Draughtsman',['Engineering Drawing','CAD Basics','Geometric Construction','Building / Mechanical Drawings'],'https://www.ncvtmis.gov.in/']
+ ],
+ Vocational:[
+  ['💻','Computer & IT','Computer Fundamentals • Web Basics • Office Tools • Digital Skills','https://www.swayam.gov.in/'],
+  ['⚡','Electrical / Electronics','Basic Circuits • Wiring • Components • Safety • Practical Work','https://www.nptel.ac.in/courses'],
+  ['🏥','Healthcare','Basic Health Science • Patient Care • First Aid • Communication','https://www.swayam.gov.in/'],
+  ['🌱','Agriculture','Crop Science • Soil • Irrigation • Farm Practices • Agri Business','https://www.swayam.gov.in/'],
+  ['🛍️','Retail / Business','Customer Service • Sales • Inventory • Digital Payments • Business Basics','https://www.swayam.gov.in/'],
+  ['🎨','Media / Design','Visual Communication • Graphic Basics • Digital Media • Portfolio','https://www.swayam.gov.in/']
+ ],
+ 'Arts & Humanities':[
+  ['📖','Humanities','History • Political Science • Economics • Sociology • Geography','https://www.epathshala.nic.in/'],
+  ['🧠','Psychology','Introduction to Psychology • Human Behaviour • Research Basics • Communication','https://www.swayam.gov.in/'],
+  ['📰','Journalism & Media','Writing • Media Literacy • Reporting • Digital Media • Communication','https://www.swayam.gov.in/'],
+  ['🎨','Design & Creative','Visual Design • Drawing • Digital Tools • Portfolio • Communication','https://www.swayam.gov.in/'],
+  ['⚖️','Law / Public Service','Civics • Constitution • Current Affairs • Reasoning • Communication','https://www.nta.ac.in/']
+ ]
+};
+
+function openStudyDetail(key){
+ const d=studyDetails[key]; if(!d)return showDetail(key);
+ setModal('LEARN YOUR STREAM',d.title,`<div class="panel" style="padding:20px">
+  <h3>${d.icon} What is this stream?</h3><p>${d.info}</p>
+  <h3 style="margin-top:20px">📚 Main Subjects</h3>
+  <div class="optionGrid">${d.subjects.map((x,i)=>`<div class="option" onclick="showLearning('${x.replace(/'/g,"\\'")}','${key}')"><b>${i+1}. ${x}</b><small>Click to see what to learn and resources.</small></div>`).join('')}</div>
+  <h3 style="margin-top:20px">🧠 What you will learn</h3><ul>${d.learn.map(x=>`<li style="margin:8px 0;color:#aeb3cd">${x}</li>`).join('')}</ul>
+  <h3 style="margin-top:20px">🔗 Learning Links</h3><div class="linkList">${d.links.map(x=>`<a class="resourceLink" href="${x[1]}" target="_blank" rel="noopener">${x[0]} ↗</a>`).join('')}</div>
+ </div>`);
+}
+function openBranchExplorer(type){
+ const arr=branchData[type]||[];
+ setModal('CHOOSE A PATH',type,`<p style="color:#aeb3cd;line-height:1.7">Choose a branch/trade to see its subjects, what you learn, career directions and learning links.</p><div class="optionGrid">${arr.map((b,i)=>`<div class="option" onclick="showBranchDetail('${type.replace(/'/g,"\\'")}','${i}')"><b>${b[0]} ${b[1]}</b><small>${Array.isArray(b[2])?b[2].slice(0,3).join(' • '):b[2]}</small></div>`).join('')}</div>`);
+}
+function showBranchDetail(type,index){
+ const b=branchData[type][Number(index)]; if(!b)return;
+ const subjects=Array.isArray(b[2])?b[2]:b[2].split(' • ');
+ setModal('BRANCH / TRADE',`${b[0]} ${b[1]}`,`<div class="panel" style="padding:20px">
+  <h3>📚 Subjects / Topics</h3><div class="optionGrid">${subjects.map((x,i)=>`<div class="option" onclick="showLearning('${x.replace(/'/g,"\\'")}','${b[1].replace(/'/g,"\\'")}')"><b>${i+1}. ${x}</b><small>Explore this topic and start learning.</small></div>`).join('')}</div>
+  <h3 style="margin-top:20px">🎯 What this can lead to</h3><p>Learn the fundamentals → practice practical skills → build small projects → gain experience → explore internships or jobs in this area.</p>
+  <h3 style="margin-top:20px">🔗 Learn Online</h3><div class="linkList"><a class="resourceLink" href="${b[3]}" target="_blank" rel="noopener">📚 Open learning resource ↗</a></div>
+ </div>`);
+}
+function showLearning(topic,context){
+ const q=encodeURIComponent(topic+' '+context+' tutorial');
+ const links=[
+  ['📘 ePathshala / NCERT','https://www.epathshala.nic.in/'],
+  ['🎓 NPTEL Courses','https://www.nptel.ac.in/courses'],
+  ['▶️ YouTube learning videos','https://www.youtube.com/results?search_query='+q],
+  ['🎓 SWAYAM Courses','https://swayam.gov.in/']
+ ];
+ setModal('LEARNING HUB',topic,`<div class="panel" style="padding:20px"><h3>📖 What to focus on</h3><p>Start with the basic concepts of <b>${topic}</b>, understand the theory, watch a beginner lesson, practise questions or activities, and then build a small project or application.</p><h3 style="margin-top:20px">🔗 Learn & Watch</h3><div class="linkList">${links.map(x=>`<a class="resourceLink" href="${x[1]}" target="_blank" rel="noopener">${x[0]} ↗</a>`).join('')}</div><p style="margin-top:18px;color:#8f95b0;font-size:12px">Tip: Prefer official textbooks, structured courses and trusted educational channels. Use YouTube as a supplement rather than your only source.</p></div>`);
+}
+
+const engineeringColleges = [
+  {rank:1,name:'IIT Madras',city:'Chennai, Tamil Nadu',branches:['Aerospace Engineering','Biological Engineering','Chemical Engineering','Civil Engineering','Computer Science & Engineering','Electrical Engineering','Engineering Physics','Mechanical Engineering','Metallurgical & Materials Engineering'],site:'https://www.iitm.ac.in/',admission:'https://www.iitm.ac.in/academics/study-at-iitm/undergraduate-programmes'},
+  {rank:2,name:'IIT Delhi',city:'New Delhi, Delhi',branches:['Computer Science & Engineering','Electrical Engineering','Mechanical Engineering','Civil Engineering','Chemical Engineering','Aerospace Engineering','Biotechnology','Engineering Physics'],site:'https://home.iitd.ac.in/',admission:'https://home.iitd.ac.in/academics.php'},
+  {rank:3,name:'IIT Bombay',city:'Mumbai, Maharashtra',branches:['Aerospace Engineering','Chemical Engineering','Civil Engineering','Computer Science & Engineering','Electrical Engineering','Environmental Science & Engineering','Energy Science & Engineering','Mechanical Engineering','Metallurgical Engineering & Materials Science','Engineering Physics'],site:'https://www.iitb.ac.in/',admission:'https://acad.iitb.ac.in/admissions/bachelors'},
+  {rank:4,name:'IIT Kanpur',city:'Kanpur, Uttar Pradesh',branches:['Aerospace Engineering','Biological Sciences & Bio-Engineering','Chemical Engineering','Civil Engineering','Computer Science & Engineering','Electrical Engineering','Materials Science & Engineering','Mechanical Engineering'],site:'https://www.iitk.ac.in/',admission:'https://www.iitk.ac.in/admissions'},
+  {rank:5,name:'IIT Kharagpur',city:'Kharagpur, West Bengal',branches:['Aerospace Engineering','Agricultural & Food Engineering','Architecture','Chemical Engineering','Civil Engineering','Computer Science & Engineering','Electrical Engineering','Electronics & Electrical Communication Engineering','Industrial & Systems Engineering','Mechanical Engineering','Metallurgical & Materials Engineering'],site:'https://www.iitkgp.ac.in/',admission:'https://www.iitkgp.ac.in/admission'},
+  {rank:6,name:'IIT Roorkee',city:'Roorkee, Uttarakhand',branches:['Architecture','Biotechnology','Chemical Engineering','Civil Engineering','Computer Science & Engineering','Electrical Engineering','Electronics & Communication Engineering','Mechanical Engineering','Metallurgical & Materials Engineering','Production & Industrial Engineering'],site:'https://www.iitr.ac.in/',admission:'https://www.iitr.ac.in/academics'},
+  {rank:7,name:'IIT Hyderabad',city:'Hyderabad, Telangana',branches:['Artificial Intelligence','Biomedical Engineering','Biotechnology','Chemical Engineering','Civil Engineering','Computer Science & Engineering','Electrical Engineering','Materials Science & Metallurgical Engineering','Mechanical Engineering'],site:'https://iith.ac.in/',admission:'https://iith.ac.in/academics/'},
+  {rank:8,name:'IIT Guwahati',city:'Guwahati, Assam',branches:['Bioengineering','Chemical Engineering','Chemical Science & Technology','Civil Engineering','Computer Science & Engineering','Data Science & Artificial Intelligence','Electronics & Communication Engineering','Electronics & Electrical Engineering','Mechanical Engineering'],site:'https://www.iitg.ac.in/',admission:'https://www.iitg.ac.in/acad/'},
+  {rank:9,name:'NIT Tiruchirappalli',city:'Tiruchirappalli, Tamil Nadu',branches:['Architecture','Chemical Engineering','Civil Engineering','Computer Science & Engineering','Electrical & Electronics Engineering','Electronics & Communication Engineering','Instrumentation & Control Engineering','Mechanical Engineering','Metallurgical & Materials Engineering','Production Engineering'],site:'https://www.nitt.edu/',admission:'https://www.nitt.edu/home/admissions/'},
+  {rank:10,name:'IIT (BHU) Varanasi',city:'Varanasi, Uttar Pradesh',branches:['Architecture','Biochemical Engineering','Biomedical Engineering','Ceramic Engineering','Chemical Engineering','Civil Engineering','Computer Science & Engineering','Electrical Engineering','Electronics Engineering','Mechanical Engineering','Metallurgical Engineering'],site:'https://iitbhu.ac.in/',admission:'https://iitbhu.ac.in/admissions'}
+];
+
+function openCollegeExplorer(){
+  const cards=engineeringColleges.map(c=>`<div class="option" onclick="openCollege('${c.rank}')"><b>🏫 #${c.rank} ${c.name}</b><small>${c.city}<br>Branches: ${c.branches.slice(0,4).join(' • ')}${c.branches.length>4?' • +more':''}</small></div>`).join('');
+  setModal('ENGINEERING COLLEGES','Explore Colleges — Top to Wider Options',`<p style="color:#aeb3cd;line-height:1.7;margin-bottom:18px">The list below follows the <b>NIRF 2025 Engineering ranking</b> for the first 10 institutes. Use the official NIRF list and JoSAA participating-institute list to explore the wider set of colleges and rank bands.</p><div class="optionGrid">${cards}</div><div class="panel" style="margin-top:18px;padding:18px"><h3>🔎 Explore the full college list</h3><p>For colleges beyond the top 10, use these official directories.</p><div class="linkList"><a class="resourceLink" href="https://www.nirfindia.org/Rankings/2025/EngineeringRanking.html" target="_blank" rel="noopener">NIRF 2025 Engineering Rankings ↗</a><a class="resourceLink" href="https://josaa.nic.in/participating-institutes/" target="_blank" rel="noopener">JoSAA 2026 Participating Institutes ↗</a></div></div>`);
+}
+function openCollege(rank){
+  const c=engineeringColleges.find(x=>x.rank===Number(rank)); if(!c)return;
+  setModal('COLLEGE DETAILS',`#${c.rank} ${c.name}`,`<p style="color:#aeb3cd;line-height:1.7">${c.city} • NIRF 2025 Engineering rank #${c.rank}</p><h3 style="margin-top:20px">🎓 Branches / UG options</h3><div class="optionGrid" style="margin-top:12px">${c.branches.map((b,i)=>`<div class="option"><b>${i+1}. ${b}</b><small>Explore this branch on the college's official site.</small></div>`).join('')}</div><div class="panel" style="margin-top:20px;padding:18px"><h3>🔗 Official College Links</h3><div class="linkList"><a class="resourceLink" href="${c.site}" target="_blank" rel="noopener">Official College Website ↗</a><a class="resourceLink" href="${c.admission}" target="_blank" rel="noopener">Official UG / Admissions Information ↗</a></div><p style="margin-top:14px;color:#8f95b0;font-size:12px">Admission rules, branches, fees and seat availability can change. Always verify current details on the official college and counselling websites.</p></div><button class="secondary" style="margin-top:16px" onclick="openCollegeExplorer('engineering')">← Back to colleges</button>`);
+}
+
+
+const categoryColleges = {
+ medical:{
+  label:'MEDICINE & HEALTH',title:'Medicine & Health Colleges',ranking:'NIRF 2025 Medical ranking',full:'https://www.nirfindia.org/Rankings/2025/MedicalRanking.html',
+  colleges:[
+   [1,'AIIMS Delhi','New Delhi, Delhi',['MBBS','B.Sc. Nursing','Allied Health / related programs'],'https://www.aiims.edu/','https://www.aiims.edu/index.php/en/admission'],
+   [2,'PGIMER Chandigarh','Chandigarh',['Medicine','Nursing','Allied Health / postgraduate programs'],'https://pgimer.edu.in/','https://pgimer.edu.in/PGIMER_PORTAL/PGIMERPORTAL/home.jsp'],
+   [3,'Christian Medical College, Vellore','Vellore, Tamil Nadu',['MBBS','B.Sc. Nursing','Allied Health','Medical Sciences'],'https://www.cmch-vellore.edu/','https://admissions.cmcvellore.ac.in/'],
+   [4,'JIPMER Puducherry','Puducherry',['MBBS','B.Sc. Allied Health','Nursing / health programs'],'https://www.jipmer.edu.in/','https://www.jipmer.edu.in/education/undergraduate'],
+   [5,'SGPGIMS Lucknow','Lucknow, Uttar Pradesh',['Medicine','Nursing','Paramedical / allied health'],'https://sgpgims.org.in/','https://sgpgims.org.in/'],
+   [6,'Banaras Hindu University','Varanasi, Uttar Pradesh',['MBBS','BDS','Nursing','Ayurveda / health sciences'],'https://www.bhu.ac.in/','https://www.bhu.ac.in/Site/UnitHomeTemplate/1/51/164'],
+   [7,'NIMHANS Bengaluru','Bengaluru, Karnataka',['Mental Health Sciences','Psychiatric Nursing','Allied Health'],'https://nimhans.ac.in/','https://nimhans.ac.in/education/'],
+   [8,"King George's Medical University",'Lucknow, Uttar Pradesh',['MBBS','BDS','Nursing','Paramedical'],'https://www.kgmu.org/','https://www.kgmu.org/'],
+   [9,'Amrita Vishwa Vidyapeetham','Coimbatore, Tamil Nadu',['MBBS','BDS','Nursing','Pharmacy / Allied Health'],'https://www.amrita.edu/','https://www.amrita.edu/admissions/'],
+   [10,'Kasturba Medical College, Manipal','Manipal, Karnataka',['MBBS','BDS','Allied Health / health sciences'],'https://manipal.edu/mu.html','https://manipal.edu/mu/admissions.html']
+  ]},
+ commerce:{
+  label:'COMMERCE & FINANCE',title:'Commerce & Finance Colleges',ranking:'NIRF 2025 University ranking used as a broad university-level reference (NIRF has no separate Commerce ranking)',full:'https://www.nirfindia.org/Rankings/2025/UniversityRanking.html',
+  colleges:[
+   [1,'Indian Institute of Science','Bengaluru, Karnataka',['Science','Mathematics / research-focused programs'],'https://iisc.ac.in/','https://iisc.ac.in/admissions/'],
+   [2,'Jawaharlal Nehru University','New Delhi, Delhi',['Economics','Social Sciences','Languages / humanities'],'https://www.jnu.ac.in/','https://www.jnu.ac.in/main/admissions'],
+   [3,'Manipal Academy of Higher Education','Manipal, Karnataka',['Commerce','Economics','Finance / Management-related programs'],'https://www.manipal.edu/','https://www.manipal.edu/mu/admissions.html'],
+   [4,'Jamia Millia Islamia','New Delhi, Delhi',['Commerce','Economics','Management','Social Sciences'],'https://www.jmi.ac.in/','https://www.jmi.ac.in/admission'],
+   [5,'University of Delhi','Delhi',['B.Com','B.Com (Hons.)','Economics','Business Economics'],'https://www.du.ac.in/','https://admission.uod.ac.in/'],
+   [6,'Banaras Hindu University','Varanasi, Uttar Pradesh',['Commerce','Economics','Financial Studies / related programs'],'https://www.bhu.ac.in/','https://www.bhu.ac.in/'],
+   [7,'BITS Pilani','Pilani, Rajasthan',['Economics','Finance-related electives','Business / management pathways'],'https://www.bits-pilani.ac.in/','https://www.bits-pilani.ac.in/admissions/'],
+   [8,'Amrita Vishwa Vidyapeetham','Coimbatore, Tamil Nadu',['Commerce','Finance','Economics / business programs'],'https://www.amrita.edu/','https://www.amrita.edu/admissions/'],
+   [9,'Jadavpur University','Kolkata, West Bengal',['Economics','Arts / social sciences'],'https://www.jaduniv.edu.in/','https://admission.jdvu.ac.in/'],
+   [10,'Aligarh Muslim University','Aligarh, Uttar Pradesh',['Commerce','Economics','Business / finance-related programs'],'https://www.amu.ac.in/','https://www.amu.ac.in/admissions']
+  ]},
+ management:{
+  label:'MANAGEMENT',title:'Management Colleges',ranking:'NIRF 2025 Management ranking',full:'https://www.nirfindia.org/Rankings/2025/ManagementRanking.html',
+  colleges:[
+   [1,'IIM Ahmedabad','Ahmedabad, Gujarat',['MBA / PGP','PhD / management research'],'https://www.iima.ac.in/','https://www.iima.ac.in/admissions-programmes'],
+   [2,'IIM Bangalore','Bengaluru, Karnataka',['MBA','Business Analytics','Management programmes'],'https://www.iimb.ac.in/','https://www.iimb.ac.in/programmes'],
+   [3,'IIM Kozhikode','Kozhikode, Kerala',['MBA / PGP','Finance','Business Analytics / management'],'https://iimk.ac.in/','https://iimk.ac.in/programmes'],
+   [4,'IIT Delhi','New Delhi, Delhi',['MBA / Management','Technology Management'],'https://home.iitd.ac.in/','https://dms.iitd.ac.in/programs/'],
+   [5,'IIM Lucknow','Lucknow, Uttar Pradesh',['MBA','Agribusiness Management','Management programmes'],'https://www.iiml.ac.in/','https://www.iiml.ac.in/programmes'],
+   [6,'IIM Mumbai','Mumbai, Maharashtra',['MBA','Operations / Supply Chain','Management programmes'],'https://iimmumbai.ac.in/','https://iimmumbai.ac.in/'],
+   [7,'IIM Calcutta','Kolkata, West Bengal',['MBA','Finance','Business Analytics / management'],'https://www.iimcal.ac.in/','https://www.iimcal.ac.in/programs'],
+   [8,'IIM Indore','Indore, Madhya Pradesh',['Five-Year Integrated Programme in Management','MBA / management'],'https://iimidr.ac.in/','https://iimidr.ac.in/programs/'],
+   [9,'Management Development Institute (MDI)','Gurugram, Haryana',['PGDM / Management','Business Analytics / management'],'https://www.mdi.ac.in/','https://www.mdi.ac.in/programs'],
+   [10,'XLRI – Xavier School of Management','Jamshedpur, Jharkhand',['Business Management','Human Resource Management'],'https://xlri.ac.in/','https://xlri.ac.in/admissions/']
+  ]},
+ law:{
+  label:'LAW',title:'Law Colleges',ranking:'NIRF 2025 Law ranking',full:'https://www.nirfindia.org/Rankings/2025/LawRanking.html',
+  colleges:[
+   [1,'National Law School of India University','Bengaluru, Karnataka',['B.A. LL.B. (Hons.)','LL.M.','Research'],'https://www.nls.ac.in/','https://www.nls.ac.in/admissions/'],
+   [2,'National Law University Delhi','New Delhi, Delhi',['B.A. LL.B. (Hons.)','LL.M.','Legal research'],'https://nludelhi.ac.in/','https://nludelhi.ac.in/admissions/'],
+   [3,'NALSAR University of Law','Hyderabad, Telangana',['B.A. LL.B. (Hons.)','LL.M.','Legal studies'],'https://www.nalsar.ac.in/','https://www.nalsar.ac.in/admissions'],
+   [4,'WB National University of Juridical Sciences','Kolkata, West Bengal',['B.A. LL.B. (Hons.)','B.Sc. LL.B.','LL.M.'],'https://www.nujs.edu/','https://www.nujs.edu/admissions/'],
+   [5,'Gujarat National Law University','Gandhinagar, Gujarat',['B.A. LL.B.','B.Com. LL.B.','B.Sc. LL.B.','LL.M.'],'https://www.gnlu.ac.in/','https://www.gnlu.ac.in/'],
+   [6,'IIT Kharagpur','Kharagpur, West Bengal',['B.Sc. LL.B. (Hons.) / Law','LL.M. / research'],'https://www.iitkgp.ac.in/','https://www.iitkgp.ac.in/admission'],
+   [7,'Symbiosis Law School Pune','Pune, Maharashtra',['B.A. LL.B.','B.B.A. LL.B.','LL.M.'],'https://www.symlaw.ac.in/','https://www.symlaw.ac.in/admissions'],
+   [8,'Jamia Millia Islamia','New Delhi, Delhi',['B.A. LL.B. (Hons.)','LL.M.','Legal studies'],'https://www.jmi.ac.in/','https://www.jmi.ac.in/admission'],
+   [9,'Aligarh Muslim University','Aligarh, Uttar Pradesh',['B.A. LL.B.','LL.M.','Law / legal studies'],'https://www.amu.ac.in/','https://www.amu.ac.in/admissions'],
+   [10,'Siksha O Anusandhan','Bhubaneswar, Odisha',['BBA LL.B.','B.A. LL.B.','LL.M.'],'https://www.soa.ac.in/','https://www.soa.ac.in/admissions']
+  ]},
+ arts:{
+  label:'ARTS & SCIENCES',title:'Arts & Sciences Colleges',ranking:'NIRF 2025 University ranking used as a broad university-level reference',full:'https://www.nirfindia.org/Rankings/2025/UniversityRanking.html',
+  colleges:[
+   [1,'Indian Institute of Science','Bengaluru, Karnataka',['BS (Research)','Science','Mathematics / research'],'https://iisc.ac.in/','https://iisc.ac.in/admissions/'],
+   [2,'Jawaharlal Nehru University','New Delhi, Delhi',['BA (Hons.)','Languages','Social Sciences','Sciences'],'https://www.jnu.ac.in/','https://www.jnu.ac.in/main/admissions'],
+   [3,'Manipal Academy of Higher Education','Manipal, Karnataka',['B.Sc.','BA','Psychology / science / humanities'],'https://www.manipal.edu/','https://www.manipal.edu/mu/admissions.html'],
+   [4,'Jamia Millia Islamia','New Delhi, Delhi',['BA','B.Sc.','Psychology','Economics','Humanities'],'https://www.jmi.ac.in/','https://www.jmi.ac.in/admission'],
+   [5,'University of Delhi','Delhi',['BA','B.Sc.','Economics','Mathematics','Psychology'],'https://www.du.ac.in/','https://admission.uod.ac.in/'],
+   [6,'Banaras Hindu University','Varanasi, Uttar Pradesh',['BA','B.Sc.','Arts','Science','Social Sciences'],'https://www.bhu.ac.in/','https://www.bhu.ac.in/'],
+   [7,'BITS Pilani','Pilani, Rajasthan',['B.Sc.','Mathematics','Physics','Chemistry / science'],'https://www.bits-pilani.ac.in/','https://www.bits-pilani.ac.in/admissions/'],
+   [8,'Amrita Vishwa Vidyapeetham','Coimbatore, Tamil Nadu',['B.Sc.','Psychology','Economics / humanities / sciences'],'https://www.amrita.edu/','https://www.amrita.edu/admissions/'],
+   [9,'Jadavpur University','Kolkata, West Bengal',['BA','B.Sc.','Economics','Science / humanities'],'https://www.jaduniv.edu.in/','https://admission.jdvu.ac.in/'],
+   [10,'Aligarh Muslim University','Aligarh, Uttar Pradesh',['BA','B.Sc.','Economics','Mathematics / sciences'],'https://www.amu.ac.in/','https://www.amu.ac.in/admissions']
+  ]}
+};
+
+function openCategoryColleges(key){
+ const d=categoryColleges[key]; if(!d)return;
+ const cards=d.colleges.map(c=>`<div class="option" onclick="openCategoryCollege('${key}',${c[0]})"><b>🏫 #${c[0]} ${c[1]}</b><small>${c[2]}<br>${c[3].slice(0,3).join(' • ')}${c[3].length>3?' • +more':''}</small></div>`).join('');
+ setModal(d.label,d.title,`<p style="color:#aeb3cd;line-height:1.7;margin-bottom:18px">${d.ranking}. This is a starter list of the top 10 for the relevant NIRF category/reference. For the complete list, use the official ranking directory below.</p><div class="optionGrid">${cards}</div><div class="panel" style="margin-top:18px;padding:18px"><h3>🔎 Explore the full list</h3><div class="linkList"><a class="resourceLink" href="${d.full}" target="_blank" rel="noopener">Official NIRF 2025 list ↗</a></div></div>`);
+}
+function openCategoryCollege(key,rank){
+ const d=categoryColleges[key]; const c=d.colleges.find(x=>x[0]===Number(rank)); if(!c)return;
+ setModal('COLLEGE DETAILS',`#${c[0]} ${c[1]}`,`<p style="color:#aeb3cd;line-height:1.7">${c[2]}</p><h3 style="margin-top:20px">🎓 Courses / Branches</h3><div class="optionGrid" style="margin-top:12px">${c[3].map((b,i)=>`<div class="option"><b>${i+1}. ${b}</b><small>Check the official college site for current eligibility, curriculum and admission route.</small></div>`).join('')}</div><div class="panel" style="margin-top:20px;padding:18px"><h3>🔗 Official Links</h3><div class="linkList"><a class="resourceLink" href="${c[4]}" target="_blank" rel="noopener">Official College Website ↗</a><a class="resourceLink" href="${c[5]}" target="_blank" rel="noopener">Official Admissions / UG Information ↗</a></div><p style="margin-top:14px;color:#8f95b0;font-size:12px">Always verify the current course list, eligibility, entrance exam, fees, deadlines and seat availability on the official college website.</p></div><button class="secondary" style="margin-top:16px" onclick="openCategoryColleges('${key}')">← Back to colleges</button>`);
+}
+
+function showDetail(title){
+  const map={
+    MPC:["MPC → Engineering","Explore engineering directions based on your interests, then compare entrance routes, colleges, branch choices, skills and careers.","Typical directions","CSE • AI/Data • ECE • EEE • Mechanical • Civil • Chemical • Aerospace • IT"],
+    BiPC:["BiPC → Science & Health","Explore medicine and health pathways as well as life-science and research options.","Typical directions","Medicine • Dentistry • Pharmacy • Nursing • Physiotherapy • Biotechnology • Agriculture • Life Sciences"],
+    CEC:["CEC → Business & Public Careers","Explore commerce, law, management, accounting, finance and related pathways.","Typical directions","Commerce • CA/CMA/CS • Finance • Management • Law • Banking • Entrepreneurship"],
+    MEC:["MEC → Analytics & Finance","Use your mathematics and commerce background to explore quantitative and business careers.","Typical directions","Economics • Finance • Analytics • Accounting • Business • Management"],
+    HEC:["HEC → Law & Humanities","Explore law, humanities, social sciences, public service and communication-oriented paths.","Typical directions","Law • Civil Services • Humanities • Social Sciences • Journalism • Public Service"]
+  };
+  const x=map[title]||["Explore "+title,"Learn what this direction involves, which skills are useful, and what your next practical step could be.","Suggested journey","Understand → Compare → Learn → Practice → Build experience → Prepare → Apply"];
+  setModal("YOUR NEXT STEP",title,`<div class="panel" style="padding:20px"><h3>${x[0]}</h3><p>${x[1]}</p><h3 style="margin-top:18px">${x[2]}</h3><p>${x[3]}</p><button class="primary" style="margin-top:15px" onclick="closeModal()">Continue exploring →</button></div>`);
+}
+
+const careerInfo={
+  "Engineering & Technology":["⚡ Engineering & Technology","A broad family of technical careers. Compare branches instead of choosing only by popularity.","CSE • ECE • VLSI • Embedded • AI/DS • EEE • Mechanical • Civil"],
+  "Medicine & Life Sciences":["🧬 Medicine & Life Sciences","Explore health, biology, laboratory and research-oriented pathways.","Medicine • Pharmacy • Nursing • Biotechnology • Agriculture • Research"],
+  "Business & Finance":["💼 Business & Finance","Build paths around numbers, markets, accounting, management and entrepreneurship.","Commerce • Finance • CA/CMA/CS • Banking • Management • Analytics"],
+  "Creative & Design":["🎨 Creative & Design","Explore careers where visual thinking, communication and creating experiences are central.","UI/UX • Product Design • Media • Writing • Animation"],
+  "Law & Public Service":["⚖️ Law & Public Service","Explore legal, administrative, social-impact and public-sector directions.","Law • Civil Services • Policy • Teaching • Public Administration"],
+  "Defence & Uniformed Services":["🛡️ Defence & Uniformed Services","Explore service-oriented career paths and their education or examination routes.","Defence • Technical Services • Uniformed Services"],
+  "Research & Academia":["🔬 Research & Academia","Explore higher studies, scientific work, teaching and technical research.","Research • Higher Studies • Teaching • Scientific Careers"],
+  "Skilled & Vocational Careers":["🛠️ Skilled & Vocational Careers","Practical routes can lead to technical and industry-focused careers.","ITI • Diploma • Manufacturing • Skilled Trades • Technical Services"]
+};
+function showCareer(name){
+  const x=careerInfo[name];
+  setModal("CAREER WORLD",x[0],`<div class="panel" style="padding:20px"><h3>${x[0]}</h3><p>${x[1]}</p><h3 style="margin-top:18px">Explore directions</h3><p>${x[2]}</p><div class="panel" style="margin-top:18px;padding:16px"><b>Suggested approach</b><p style="margin-top:7px">Choose an area → understand eligibility → explore education → build relevant skills → gain experience → compare career opportunities.</p></div></div>`);
+}
+
+function openRoadmap(title){
+  const routes={
+    "MPC → CSE → Software Engineer":[
+      ["🎒","Class 10"],["📚","Choose MPC"],["🎓","B.Tech / CSE"],["💻","Programming + DSA"],["🧪","Projects + Portfolio"],["💼","Internship"],["📄","Resume + Interviews"],["🏆","Software Engineer"]],
+    "MPC → ECE → Embedded Engineer":[
+      ["🎒","Class 10"],["📚","Choose MPC"],["🎓","B.Tech / ECE"],["🔌","C + Embedded C"],["⚙️","Microcontrollers + Electronics"],["🧪","Embedded Projects"],["💼","Internship"],["🏆","Embedded Engineer"]],
+    "MPC → AI & Data Science":[
+      ["🎒","Class 10"],["📚","Choose MPC"],["🎓","AI / Data Science Degree"],["🐍","Python"],["📊","Statistics + SQL"],["🤖","Machine Learning"],["🧪","Portfolio Projects"],["🏆","AI / Data Professional"]],
+    "BiPC → Medicine → Doctor":[
+      ["🎒","Class 10"],["🧬","Choose BiPC"],["📝","Entrance Preparation"],["🎓","Medical College"],["🩺","Clinical Training"],["📚","Higher Study / Specialization"],["🏆","Doctor"]],
+    "BiPC → Pharmacy / Life Sciences":[
+      ["🎒","Class 10"],["🧬","Choose BiPC"],["🎓","Pharmacy / Life Sciences Degree"],["🔬","Practical / Lab Skills"],["💼","Internship"],["📄","Career Preparation"],["🏆","Industry / Research Career"]],
+    "CEC → Commerce → Finance":[
+      ["🎒","Class 10"],["💼","Choose CEC"],["🎓","Commerce / Finance Degree"],["📒","Accounting + Business Skills"],["💼","Internship"],["📄","Resume + Interview Prep"],["🏆","Finance Professional"]],
+    "MEC → Economics → Data Analyst":[
+      ["🎒","Class 10"],["📊","Choose MEC"],["🎓","Economics / Analytics Degree"],["📈","Statistics + Excel"],["🗄️","SQL + Python"],["📊","Dashboards"],["🧪","Portfolio"],["🏆","Data Analyst"]],
+    "Any Degree → IT Career":[
+      ["🎓","Choose a degree"],["💻","Learn Programming"],["🧪","Build Projects"],["🌐","Portfolio"],["💼","Internship"],["📄","Resume"],["🎤","Interviews"],["🏆","First IT Job"]]
+  };
+  const steps=routes[title]||[["🎒","Start"],["📚","Learn"],["🧪","Practice"],["💼","Gain Experience"],["📄","Prepare"],["🏆","Get Your First Job"]];
+  lastRoadmap=title;
+  setModal("POPULAR ROADMAP",title,`
+    <p style="color:#aeb3cd;line-height:1.7;margin-bottom:12px">A roadmap is a guide, not a fixed rule. Entrance routes, course choices, college and goals can change your path.</p>
+    <div class="roadmapMeta"><span>🧭 ${steps.length} stages</span><span>🎯 Career direction</span><span>🔄 Flexible path</span></div>
+    <div class="roadmapBox">${steps.map((s,i)=>`
+      <div class="route ${i===0?'done':''}">
+        <b>${i+1}. ${s[0]} ${s[1]}</b><span>${i===0?'✓':i<steps.length-1?'↓':'🎯'}</span>
+      </div>`).join("")}</div>
+    <div class="panel" style="margin-top:20px;padding:18px">
+      <h3>💡 Make this roadmap yours</h3>
+      <p>At each stage, compare your interests, eligibility, cost, location, skills and career outcomes before moving forward.</p>
+    </div>`);
+}
+
+const toolOptions={
+  interest:{eyebrow:'CAREER INTEREST TEST',title:'Explore Your Interest Test',desc:'Choose the part of the assessment you want to explore first.',opts:[
+    ['💡','Interests','What activities do you naturally enjoy?','Show questions about interests.'],
+    ['📚','Subjects','Which school subjects feel most interesting?','Compare subject preferences.'],
+    ['🧠','Work Style','Do you prefer logical, creative, people-focused or hands-on work?','Explore work-style choices.'],
+    ['🤝','Personality','Explore teamwork, leadership, independence and communication preferences.','Understand personal work preferences.'],
+    ['🎯','Career Matches','See how answers can connect to career areas.','View career match examples.'],
+    ['🚀','Take Full Test','Start the existing 5-question career discovery test.','Start assessment.']
+  ]},
+  roadmap:{eyebrow:'CAREER ROADMAP',title:'Build Your Career Roadmap',desc:'Choose the level from which you want to start planning.',opts:[
+    ['🎒','After Class 10','Explore Intermediate, Diploma, ITI and Vocational routes.','Start from Class 10.'],
+    ['📚','11th & 12th','Explore MPC, BiPC, CEC, MEC, HEC and related directions.','Start from Intermediate.'],
+    ['🎓','College','Choose degree, branch, entrance route and specialization.','Start from college.'],
+    ['💻','Skills','Map the skills required for your target career.','Build skill roadmap.'],
+    ['💼','Internship','Plan projects and experience before graduation.','Build internship roadmap.'],
+    ['🏆','First Job','Plan resume, interviews, applications and job preparation.','Build job roadmap.']
+  ]},
+  skills:{eyebrow:'SKILL CHECKER',title:'Check Your Skills',desc:'Choose the skill area you want to improve.',opts:[
+    ['💻','Programming','C, C++, Java, Python, JavaScript and problem solving.','View programming path.'],
+    ['⚡','Technical Skills','Electronics, embedded, VLSI, cloud, data and tools.','View technical path.'],
+    ['🗣️','Communication','English, speaking, writing, presentation and teamwork.','View communication path.'],
+    ['🧮','Aptitude','Quantitative ability, reasoning and verbal ability.','View aptitude path.'],
+    ['🧪','Project Skills','Build, document and present real projects.','View project path.'],
+    ['🏅','Certifications','Choose useful learning and certificate areas.','View certification path.']
+  ]},
+  college:{eyebrow:'COLLEGE EXPLORER',title:'Explore College Options',desc:'Start with the type of education you are considering.',opts:[
+    ['⚙️','Engineering Colleges','CSE, ECE, EEE, Mechanical, Civil, AI/DS and more.','Explore engineering.'],
+    ['🩺','Medical & Health Colleges','Medicine, pharmacy, nursing, allied health and life sciences.','Explore health.'],
+    ['💰','Commerce & Finance Colleges','Commerce, accounting, finance, banking and professional courses.','Explore commerce.'],
+    ['⚖️','Law Colleges','Law and integrated legal education options.','Explore law.'],
+    ['🔬','Arts & Science Colleges','Science, mathematics, psychology, economics, humanities and more.','Explore arts/science.'],
+    ['📍','College by Location','Compare options by city/state and preferred study location.','Explore by location.']
+  ]},
+  internship:{eyebrow:'INTERNSHIP FINDER',title:'Explore Internship Options',desc:'Choose the kind of experience you want to build.',opts:[
+    ['💻','Technical Internship','Software, electronics, embedded, data and engineering.','Explore technical internships.'],
+    ['🔬','Research Internship','Labs, research groups, universities and technical projects.','Explore research internships.'],
+    ['📊','Business Internship','Finance, marketing, HR, operations and sales.','Explore business internships.'],
+    ['🌐','Remote Internship','Remote-friendly learning and project opportunities.','Explore remote options.'],
+    ['☀️','Summer Internship','Short-term experience during academic breaks.','Explore summer options.'],
+    ['📁','Portfolio Before Internship','Build projects and a profile before applying.','Prepare your portfolio.']
+  ]},
+  resume:{eyebrow:'RESUME BUILDER',title:'Choose Your Resume Type',desc:'Select the resume format that fits your current stage.',opts:[
+    ['🎓','Student Resume','For students with limited experience.','Create student resume.'],
+    ['💼','Fresher Resume','For final-year students and graduates applying for jobs.','Create fresher resume.'],
+    ['🧪','Project Resume','Highlight projects, technical work and achievements.','Create project-focused resume.'],
+    ['💼','Internship Resume','Tailor your profile for internship applications.','Create internship resume.'],
+    ['🤖','ATS-Friendly Resume','Simple structure for application systems.','Create ATS-style resume.'],
+    ['🔗','LinkedIn Profile','Turn your education and projects into a professional profile.','Build LinkedIn profile.']
+  ]},
+  interview:{eyebrow:'INTERVIEW PRACTICE',title:'Choose Your Interview Practice',desc:'Practice one hiring stage at a time.',opts:[
+    ['🧮','Aptitude Round','Quantitative, reasoning and verbal questions.','Start aptitude practice.'],
+    ['💻','Technical Round','Core subjects, coding and role-specific questions.','Start technical practice.'],
+    ['🎤','HR Round','Common HR questions and professional communication.','Start HR practice.'],
+    ['👥','Group Discussion','Speaking, listening and structured discussion.','Start GD practice.'],
+    ['🗣️','Communication','Improve confidence, speaking and presentation.','Start communication practice.'],
+    ['🏁','Mock Interview','Practice a complete interview-style session.','Start mock interview.']
+  ]},
+  goals:{eyebrow:'GOAL TRACKER',title:'Track Your Career Progress',desc:'Choose what you want to track.',opts:[
+    ['📚','Learning Goals','Courses, subjects, study plans and weekly learning.','Track learning.'],
+    ['🧪','Project Goals','Project ideas, milestones and portfolio progress.','Track projects.'],
+    ['🏅','Certificate Goals','Courses, exams and certifications to complete.','Track certificates.'],
+    ['💼','Internship Applications','Applications, interviews, follow-ups and offers.','Track internships.'],
+    ['📄','Job Applications','Companies, roles, application status and interviews.','Track jobs.'],
+    ['🎯','Placement Checklist','Resume, aptitude, technical, HR and final preparation.','Track placement.']
+  ]}
+};
+
+function openTool(key){
+  const d=toolOptions[key]; if(!d)return;
+  setModal(d.eyebrow,d.title,`<p style="color:#aeb3cd;line-height:1.7;margin-bottom:20px">${d.desc}</p><div class="optionGrid">${d.opts.map((o,i)=>`<div class="option" onclick="toolChoice('${key}',${i})"><b>${o[0]} ${o[1]}</b><small>${o[2]}</small></div>`).join('')}</div>`);
+}
+function toolChoice(key,index){
+  const d=toolOptions[key],o=d.opts[index];
+  if(key==='interest' && index===5){ closeModal(); openAssessment(); return; }
+  setModal(d.eyebrow,o[1],`<div class="panel" style="padding:22px"><div style="font-size:30px">${o[0]}</div><h3>${o[1]}</h3><p>${o[2]}</p><h3 style="margin-top:18px">What's inside?</h3><p>${o[3]}</p><div class="roadmapBox" style="margin-top:18px"><div class="route"><b>1. Explore</b><span>→</span></div><div class="route"><b>2. Learn what you need</b><span>→</span></div><div class="route"><b>3. Practice or compare</b><span>→</span></div><div class="route"><b>4. Build your next step</b><span>🎯</span></div></div><button class="primary" style="margin-top:18px" onclick="openTool('${key}')">Back to ${d.title} →</button></div>`);
+}
+
+const resourceData = {
+  courses:{
+    eyebrow:"FREE COURSES",
+    title:"Learn from trusted course platforms",
+    desc:"Open a resource, learn a topic, then return to Dream Canvas and continue your roadmap.",
+    items:[
+      ["🌐","MDN Web Development","Complete beginner-to-intermediate web development tutorials for HTML, CSS and JavaScript.","Web","https://developer.mozilla.org/en-US/docs/Learn_web_development"],
+      ["🐍","NPTEL — Joy of Computing with Python","A structured Python course from NPTEL/IIT Ropar; useful for building programming foundations.","Course","https://www.nptel.ac.in/courses/106106182"],
+      ["💻","freeCodeCamp","Interactive programming and web-development lessons with projects.","Course","https://www.freecodecamp.org/"]
+    ]
+  },
+  links:{
+    eyebrow:"USEFUL LINKS",
+    title:"Official and useful education links",
+    desc:"Use official websites for admissions and current exam information.",
+    items:[
+      ["🏫","JoSAA 2026","Official joint seat allocation and admission information for IITs, NITs, IIITs and other participating institutes.","Official","https://josaa.nic.in/"],
+      ["📝","National Testing Agency","Official NTA portal for national entrance examinations and exam information.","Official","https://www.nta.ac.in/"],
+      ["🌐","MDN Web Docs","Reference and learning material for web technologies.","Learning","https://developer.mozilla.org/en-US/"]
+    ]
+  },
+  videos:{
+    eyebrow:"LEARNING VIDEOS",
+    title:"Video learning for students",
+    desc:"Video resources open on YouTube so students can learn topic-by-topic.",
+    items:[
+      ["▶️","Python for Beginners","YouTube search for beginner-friendly Python lessons and playlists.","Video","https://www.youtube.com/results?search_query=python+for+beginners"],
+      ["▶️","C Programming","YouTube search for C programming courses, examples and problem-solving lessons.","Video","https://www.youtube.com/results?search_query=C+programming+for+beginners"],
+      ["▶️","Embedded Systems","YouTube search for embedded systems, microcontrollers and Embedded C lessons.","Video","https://www.youtube.com/results?search_query=embedded+systems+for+beginners"],
+      ["▶️","ECE / Electronics","YouTube search for electronics, digital electronics and communication fundamentals.","Video","https://www.youtube.com/results?search_query=ECE+electronics+digital+electronics"],
+      ["▶️","Aptitude Preparation","YouTube search for quantitative aptitude and placement reasoning practice.","Video","https://www.youtube.com/results?search_query=quantitative+aptitude+placement+preparation"],
+      ["▶️","Interview Preparation","YouTube search for technical and HR interview preparation for freshers.","Video","https://www.youtube.com/results?search_query=fresher+technical+HR+interview+preparation"]
+    ]
+  },
+  exams:{
+    eyebrow:"ENTRANCE EXAMS",
+    title:"Explore entrance-exam resources",
+    desc:"Check the official exam website before relying on dates or eligibility information.",
+    items:[
+      ["📝","JEE Main / JEE Advanced","Use official NTA and JoSAA sources for engineering admission information.","Official","https://josaa.nic.in/"],
+      ["🎓","CUET","Find current undergraduate entrance information through the official NTA ecosystem.","Official","https://cuet.nta.nic.in/"],
+      ["🩺","Medical Entrance Information","Use official NTA resources for current national examination information.","Official","https://www.nta.ac.in/"]
+    ]
+  },
+  projects:{
+    eyebrow:"PROJECTS",
+    title:"Build while you learn",
+    desc:"Choose a small project that matches your current skill level.",
+    items:[
+      ["💻","Web Projects","Build a portfolio website, calculator, landing page or student dashboard.","Ideas","https://www.freecodecamp.org/"],
+      ["🐍","Python Projects","Try beginner automation, data or logic projects after learning Python.","Ideas","https://www.nptel.ac.in/courses/106106182"],
+      ["🔌","Embedded Projects","Use microcontrollers, sensors and Embedded C for practical projects.","Video ideas","https://www.youtube.com/results?search_query=embedded+systems+projects+for+beginners"]
+    ]
+  },
+  certifications:{
+    eyebrow:"CERTIFICATIONS",
+    title:"Turn learning into proof",
+    desc:"Choose a certificate only after checking the course content and learning value.",
+    items:[
+      ["🏅","NPTEL / SWAYAM","Explore NPTEL courses and certification opportunities in technical and academic subjects.","Platform","https://www.nptel.ac.in/"],
+      ["🏅","freeCodeCamp Certifications","Project-based certifications for several web and programming areas.","Platform","https://www.freecodecamp.org/"]
+    ]
+  },
+  communication:{
+    eyebrow:"COMMUNICATION",
+    title:"Build professional communication",
+    desc:"Practice speaking, writing, presenting and interview communication regularly.",
+    items:[
+      ["🗣️","English Speaking Videos","YouTube search for English speaking practice and pronunciation lessons.","Video","https://www.youtube.com/results?search_query=English+speaking+practice+for+students"],
+      ["🎤","Presentation Skills","Video lessons for public speaking, presentations and confidence.","Video","https://www.youtube.com/results?search_query=presentation+skills+for+students"],
+      ["🧑‍💼","Interview Communication","Practice common fresher interview communication questions.","Video","https://www.youtube.com/results?search_query=HR+interview+communication+skills+freshers"]
+    ]
+  },
+  aptitude:{
+    eyebrow:"APTITUDE",
+    title:"Practice for entrance exams and placements",
+    desc:"Build a daily practice habit and track your accuracy over time.",
+    items:[
+      ["🧮","Quantitative Aptitude Videos","YouTube search for percentages, ratios, averages, algebra and arithmetic.","Video","https://www.youtube.com/results?search_query=quantitative+aptitude+for+beginners"],
+      ["🧩","Logical Reasoning Videos","Practice patterns, puzzles, reasoning and placement questions.","Video","https://www.youtube.com/results?search_query=logical+reasoning+for+placements"],
+      ["📖","Verbal Ability Videos","Practice vocabulary, grammar, reading comprehension and verbal questions.","Video","https://www.youtube.com/results?search_query=verbal+ability+for+placements"]
+    ]
+  }
+};
+
+function openResource(key){
+  const d=resourceData[key]; if(!d)return;
+  setModal(d.eyebrow,d.title,
+    `<p style="color:#aeb3cd;line-height:1.7;margin-bottom:18px">${d.desc}</p>
+     <div>${d.items.map(item=>`
+       <a class="resourceLink" href="${item[4]}" target="_blank" rel="noopener noreferrer">
+         <div><span style="font-size:22px">${item[0]}</span> <b>${item[1]}</b> ${item[3]==='Video'?'<span class="videoBadge">VIDEO</span>':''}</div>
+         <small style="display:block;color:#8f95b0;margin-top:5px;line-height:1.5">${item[2]}</small>
+         <span style="display:block;color:#a98cff;font-size:11px;margin-top:7px">Open resource ↗</span>
+       </a>`).join('')}</div>
+     <button class="secondary" style="margin-top:18px" onclick="closeModal()">Close</button>`
+  );
+}
+
+function searchResources(q){
+  const query=q.trim().toLowerCase();
+  let visible=0;
+  document.querySelectorAll('#resourceCards .card').forEach(c=>{
+    const match=!query || c.innerText.toLowerCase().includes(query);
+    c.style.display=match?"block":"none";
+    if(match)visible++;
+  });
+  const existing=document.getElementById("resourceEmpty");
+  if(existing)existing.remove();
+  if(!visible){
+    const empty=document.createElement("div");
+    empty.id="resourceEmpty";empty.className="emptyState";
+    empty.textContent="No matching resource in this prototype. Try another keyword.";
+    document.getElementById("resourceCards").appendChild(empty);
+  }
+}
+
+document.querySelectorAll('.roadmap-card').forEach(card=>{
+  card.addEventListener('keydown',e=>{if(e.key==="Enter")card.click()});
+});
+
+const skillsData = {
+  "Programming Languages": {
+    desc:"Choose a language, see what to learn, then open beginner-friendly learning resources.",
+    items:[
+      ["C","Variables → loops → functions → arrays → pointers → structures","https://www.learn-c.org/","Learn-C"],
+      ["C++","Syntax → OOP → STL → DSA → problem solving","https://www.learncpp.com/","LearnCpp"],
+      ["Java","Syntax → OOP → collections → exceptions → JDBC → projects","https://dev.java/learn/","Dev.java"],
+      ["Python","Syntax → functions → OOP → libraries → automation → projects","https://developers.google.com/edu/python","Google Python Class"],
+      ["JavaScript","Variables → functions → DOM → async → APIs → projects","https://developer.mozilla.org/en-US/docs/Learn_web_development","MDN Web Docs"],
+      ["SQL","SELECT → filtering → joins → grouping → subqueries → databases","https://www.w3schools.com/sql/","W3Schools SQL"],
+      ["HTML & CSS","HTML structure → CSS → responsive design → accessibility","https://developer.mozilla.org/en-US/docs/Learn_web_development","MDN Web Development"],
+      ["Go","Syntax → packages → concurrency → APIs → projects","https://go.dev/learn/","Go Learn"],
+      ["Rust","Ownership → structs → enums → traits → error handling","https://www.rust-lang.org/learn","Rust Learn"]
+    ]
+  },
+  "Technical Skills": {
+    desc:"Explore technical areas used across software, ECE, embedded, cloud and engineering careers.",
+    items:[
+      ["Data Structures & Algorithms","Arrays → linked lists → stacks → queues → trees → graphs → algorithms","https://www.geeksforgeeks.org/data-structures/","GeeksforGeeks"],
+      ["Web Development","HTML/CSS → JavaScript → frontend → backend → APIs → deployment","https://developer.mozilla.org/en-US/docs/Learn_web_development","MDN"],
+      ["Embedded Systems","C → microcontrollers → GPIO → timers → UART/SPI/I2C → RTOS","https://lms.nielit.gov.in/","NIELIT Virtual Academy"],
+      ["VLSI & Digital Design","Digital logic → Verilog → FPGA → RTL → verification","https://nptel.ac.in/","NPTEL"],
+      ["Networking","OSI/TCP-IP → IP addressing → routing → switching → troubleshooting","https://www.netacad.com/","Cisco Networking Academy"],
+      ["Cloud Computing","Linux → networking → cloud basics → storage → compute → security","https://aws.amazon.com/training/","AWS Training"],
+      ["Cybersecurity","Security basics → networking → Linux → threats → defense → ethical testing","https://www.netacad.com/","Cisco Networking Academy"],
+      ["IoT","Sensors → microcontrollers → protocols → cloud → IoT projects","https://lms.nielit.gov.in/","NIELIT Virtual Academy"],
+      ["AI & Machine Learning","Python → statistics → data → ML algorithms → evaluation → projects","https://developers.google.com/machine-learning","Google ML"],
+      ["Data Analytics","Excel → SQL → Python → statistics → visualization → dashboards","https://www.kaggle.com/learn","Kaggle Learn"]
+    ]
+  },
+  "Professional Skills": {
+    desc:"Skills that help you study, work with teams and succeed in interviews.",
+    items:[
+      ["Communication","Speaking → listening → writing → presentations → professional communication","https://www.coursera.org/","Coursera"],
+      ["English","Grammar → vocabulary → reading → writing → speaking practice","https://learnenglish.britishcouncil.org/","British Council"],
+      ["Aptitude","Percentages → ratios → averages → probability → reasoning → timed practice","https://www.indiabix.com/","IndiaBix"],
+      ["Interview Skills","Introduction → technical questions → HR questions → mock interviews","https://grow.google/certificates/interview-warmup/","Google Interview Warmup"],
+      ["Teamwork & Leadership","Collaboration → responsibility → problem solving → leadership","https://skillsbuild.org/","IBM SkillsBuild"],
+      ["Presentation Skills","Structure → slides → storytelling → delivery → confidence","https://www.microsoft.com/en-us/microsoft-365/learning-center","Microsoft Learning"]
+    ]
+  },
+  "Career & Portfolio": {
+    desc:"Turn your skills into evidence that colleges, internships and employers can see.",
+    items:[
+      ["Git & GitHub","Git basics → repositories → branches → commits → collaboration → portfolio","https://docs.github.com/en/get-started","GitHub Docs"],
+      ["Projects","Choose problem → plan → build → test → document → publish","https://www.freecodecamp.org/","freeCodeCamp"],
+      ["Resume","Education → skills → projects → internships → achievements → tailoring","https://www.canva.com/resumes/","Canva Resume"],
+      ["LinkedIn","Profile → headline → projects → certificates → networking → opportunities","https://www.linkedin.com/learning/","LinkedIn Learning"],
+      ["Certifications","Choose role → select relevant certification → study → practice → exam","https://www.coursera.org/","Coursera"],
+      ["Hackathons","Find problem → form team → prototype → present → receive feedback","https://devpost.com/","Devpost"]
+    ]
+  }
+};
+
+function openSkillsExplorer(){
+  document.getElementById('modalEyebrow').textContent="SKILLS EXPLORER";
+  document.getElementById('modalTitle').textContent="Explore Skills & Languages";
+  document.getElementById('modalContent').innerHTML=`
+    <p style="color:#aeb3cd;line-height:1.7">
+      Pick a skill area. Then choose a language or skill to see what to learn and open trusted learning resources.
+    </p>
+    <div class="skillsExplorerGrid">
+      ${Object.keys(skillsData).map((k,i)=>`
+        <div class="skillCategory" onclick="showSkillCategory('${k.replace(/'/g,"\\'")}')">
+          <b>${["💻","⚙️","🗣️","🚀"][i]} ${k}</b>
+          <small>${skillsData[k].desc}</small>
+        </div>`).join("")}
+    </div>`;
+  document.getElementById('modal').classList.add('show');
+}
+
+function showSkillCategory(category){
+  const d=skillsData[category];
+  document.getElementById('modalEyebrow').textContent="SKILLS → "+category.toUpperCase();
+  document.getElementById('modalTitle').textContent=category;
+  document.getElementById('modalContent').innerHTML=`
+    <p style="color:#aeb3cd;line-height:1.7">${d.desc}</p>
+    <div class="skillResources">
+      ${d.items.map(item=>`
+        <div class="skillResource">
+          <b>${item[0]}</b>
+          <p>${item[1]}</p>
+          <a href="${item[2]}" target="_blank" rel="noopener">${item[3]} ↗</a>
+        </div>`).join("")}
+    </div>
+    <div style="margin-top:20px">
+      <button class="secondary" onclick="openSkillsExplorer()">← All Skill Areas</button>
+    </div>`;
+}
+
+</script>
+</body>
+</html>
